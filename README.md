@@ -18,7 +18,7 @@
 Ведущие и ведомое устройства на данный момент собраны на микроконтроллерах ATmega8, ATmega88 и модулях приемо-передатчика NRF24L01+. 
 Программы написаны на языке СИ в среде Microchip Studio, а также в среде Arduino IDE специально для платформы Arduino.
 
-<img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/20221226_200708_HDR.jpg" /> 
+<img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/20221226_195855.jpg" />
 
 ## Содержимое репозитория
 ### На данный момент в репозитории можно найти:
