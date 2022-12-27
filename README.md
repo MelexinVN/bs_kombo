@@ -1,4 +1,4 @@
-<img align="right" width=120 src="https://github.com/MelexinVN/bs/blob/master/public/media/logo_red.png" />
+<img align="right" width=120 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/logo_red.png" />
 
 # Открытые системы беспроводной коммуникации "КомБО"
 
@@ -18,7 +18,8 @@
 Ведущие и ведомое устройства на данный момент собраны на микроконтроллерах ATmega8, ATmega88 и модулях приемо-передатчика NRF24L01+. 
 Программы написаны на языке СИ в среде Microchip Studio, а также в среде Arduino IDE специально для платформы Arduino.
 
-<img align="center" width=500 src="https://github.com/MelexinVN/bs/blob/master/public/media/atmega8%2Bnrf24l01_10pcs.jpg" /> <img align="center" width=500 src="https://github.com/MelexinVN/bs/blob/master/public/media/nrf24l01_20pcs.jpg" />
+<img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/20221226_200708_HDR.jpg" /> 
+<img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/20221226_200403.jpg" />
 
 ## Содержимое репозитория
 ### На данный момент в репозитории можно найти:
@@ -48,8 +49,8 @@
 
 ## Лицензия
 Проект распространяется под лицензией Creative Commons Attribution-ShareAlike 4.0 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), 
-а программное обеспечение - под лицензией GNU General Public License v3.0 [GPL-3.0 license](https://github.com/MelexinVN/bs/blob/master/LICENSE)
+а программное обеспечение - под лицензией GNU General Public License v3.0 [GPL-3.0 license](https://github.com/MelexinVN/bs_kombo/blob/main/LICENSE)
 
 ## License
 This project is licensed under the Creative Commons 4.0 license with Attribution-ShareAlike [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), 
-and the software is licensed under the GNU General Public License v3.0 [GPL-3.0 license](https://github.com/MelexinVN/bs/blob/master/LICENSE)
+and the software is licensed under the GNU General Public License v3.0 [GPL-3.0 license](https://github.com/MelexinVN/bs_kombo/blob/main/LICENSE)
