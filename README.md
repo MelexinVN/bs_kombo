@@ -34,7 +34,7 @@
 
 <img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/20221226_200403.jpg" />
 
-### Cайт проекта: [bs-kombo.tilda.ws/](http://bs-kombo.tilda.ws/)
+### Cайт проекта: [bs-kombo.tilda.ws](http://bs-kombo.tilda.ws/)
 
 ### Электронная почта: 		    [bskombo@yandex.ru](bskombo@yandex.ru)
 
