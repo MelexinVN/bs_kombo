@@ -89,7 +89,10 @@ void nrf24l01_receive(void)
 					}	
 					else if (rx_buf[2] != 0)	//если температура отрицательная
 					{	//выводим в порт строку с минусом и преобразованием значений
-						sprintf(str, "0x%02X\tds18b20\tt = -%d.%d°C\r\n", rx_buf[0], (255 - rx_buf[3]),rx_buf[4]);			
+						//если дробная часть не равна нулю
+						if (rx_buf[4] != 0) sprintf(str, "0x%02X\tds18b20\tt = -%d.%d*C\r\n", rx_buf[0], (255 - rx_buf[3]), (10 - rx_buf[4]));
+						//если дробная часть равна нулю
+						else sprintf(str, "0x%02X\tds18b20\tt = -%d.%d*C\r\n", rx_buf[0], (256 - rx_buf[3]), rx_buf[4]);	
 						usart_print(str);
 					}
 				}
