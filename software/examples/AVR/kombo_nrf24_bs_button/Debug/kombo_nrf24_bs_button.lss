@@ -1,0 +1,2364 @@
+
+kombo_nrf24_bs_button.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000d82  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000b0  00800060  00000d82  00000e16  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000008b  00800110  00800110  00000ec6  2**0
+                  ALLOC
+  3 .comment      0000005c  00000000  00000000  00000ec6  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000f24  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000168  00000000  00000000  00000f60  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000018a5  00000000  00000000  000010c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a06  00000000  00000000  0000296d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000d50  00000000  00000000  00003373  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003d8  00000000  00000000  000040c4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005bc  00000000  00000000  0000449c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000f0b  00000000  00000000  00004a58  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000128  00000000  00000000  00005963  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	53 c2       	rjmp	.+1190   	; 0x4aa <__vector_1>
+   4:	75 c2       	rjmp	.+1258   	; 0x4f0 <__vector_2>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	ae c2       	rjmp	.+1372   	; 0x56a <__vector_6>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	3f c2       	rjmp	.+1150   	; 0x496 <__vector_11>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	11 e0       	ldi	r17, 0x01	; 1
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e8       	ldi	r30, 0x82	; 130
+  3a:	fd e0       	ldi	r31, 0x0D	; 13
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 31       	cpi	r26, 0x10	; 16
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	21 e0       	ldi	r18, 0x01	; 1
+  4a:	a0 e1       	ldi	r26, 0x10	; 16
+  4c:	b1 e0       	ldi	r27, 0x01	; 1
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	ab 39       	cpi	r26, 0x9B	; 155
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	3b d3       	rcall	.+1654   	; 0x6d0 <main>
+  5a:	91 c6       	rjmp	.+3362   	; 0xd7e <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <nrf24_read_reg>:
+
+volatile uint8_t f_rx = 0, f_tx = 0;	//флаги приема и передачи
+
+//Функция чтения регистра модуля
+uint8_t nrf24_read_reg(uint8_t addr)
+{
+  5e:	cf 93       	push	r28
+  60:	c8 2f       	mov	r28, r24
+	uint8_t dt = 0, cmd;				//переменные данных и команды
+	CSN_ON();							//прижимаем ногу CS к земле
+  62:	82 b3       	in	r24, 0x12	; 18
+  64:	8f 77       	andi	r24, 0x7F	; 127
+  66:	82 bb       	out	0x12, r24	; 18
+	dt = spi_change_byte(addr);			//отправка адреса регистра, прием
+  68:	8c 2f       	mov	r24, r28
+  6a:	59 d3       	rcall	.+1714   	; 0x71e <spi_change_byte>
+	
+	//если адрес равен адресу регистра статуса то и возварщаем его состояние	
+	if (addr != STATUS)					//а если не равен
+  6c:	c7 30       	cpi	r28, 0x07	; 7
+  6e:	11 f0       	breq	.+4      	; 0x74 <nrf24_read_reg+0x16>
+	{
+		cmd = 0xFF;						//команда NOP для получения данных
+		dt = spi_change_byte(cmd);		//
+  70:	8f ef       	ldi	r24, 0xFF	; 255
+  72:	55 d3       	rcall	.+1706   	; 0x71e <spi_change_byte>
+	}
+	CSN_OFF();							//поднимаем ногу CS
+  74:	92 b3       	in	r25, 0x12	; 18
+  76:	90 68       	ori	r25, 0x80	; 128
+  78:	92 bb       	out	0x12, r25	; 18
+	return dt;							//возвращаемое значение
+}
+  7a:	cf 91       	pop	r28
+  7c:	08 95       	ret
+
+0000007e <nrf24_write_reg>:
+
+//Процедура записи регистра в модуль
+void nrf24_write_reg(uint8_t addr, uint8_t dt)		
+{
+  7e:	cf 93       	push	r28
+  80:	c6 2f       	mov	r28, r22
+	addr |= W_REGISTER;					//включаем бит записи в адрес	
+	CSN_ON();							//прижимаем ногу CS к земле
+  82:	92 b3       	in	r25, 0x12	; 18
+  84:	9f 77       	andi	r25, 0x7F	; 127
+  86:	92 bb       	out	0x12, r25	; 18
+	spi_send_byte(addr);				//отправляем адрес
+  88:	80 62       	ori	r24, 0x20	; 32
+  8a:	45 d3       	rcall	.+1674   	; 0x716 <spi_send_byte>
+	spi_send_byte(dt);					//отправляем значение
+  8c:	8c 2f       	mov	r24, r28
+  8e:	43 d3       	rcall	.+1670   	; 0x716 <spi_send_byte>
+	CSN_OFF();							//поднимаем ногу CS
+  90:	82 b3       	in	r24, 0x12	; 18
+  92:	80 68       	ori	r24, 0x80	; 128
+  94:	82 bb       	out	0x12, r24	; 18
+}
+  96:	cf 91       	pop	r28
+  98:	08 95       	ret
+
+0000009a <nrf24_toggle_features>:
+
+//Процедура активации дополнительных команд
+void nrf24_toggle_features(void)							
+{	
+	uint8_t dt = ACTIVATE;				//переменная с командой активации
+	CSN_ON();							//прижимаем ногу CS к земле
+  9a:	82 b3       	in	r24, 0x12	; 18
+  9c:	8f 77       	andi	r24, 0x7F	; 127
+  9e:	82 bb       	out	0x12, r24	; 18
+	spi_send_byte(dt);					//отправляем команду
+  a0:	80 e5       	ldi	r24, 0x50	; 80
+  a2:	39 d3       	rcall	.+1650   	; 0x716 <spi_send_byte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a4:	82 e0       	ldi	r24, 0x02	; 2
+  a6:	8a 95       	dec	r24
+  a8:	f1 f7       	brne	.-4      	; 0xa6 <nrf24_toggle_features+0xc>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <nrf24_toggle_features+0x12>
+	_delay_us(1);						//задержка
+	dt = 0x73;							//следующая команда
+	spi_send_byte(dt);					//отправляем команду
+  ac:	83 e7       	ldi	r24, 0x73	; 115
+  ae:	33 d3       	rcall	.+1638   	; 0x716 <spi_send_byte>
+	CSN_OFF();							//поднимаем ногу CS
+  b0:	82 b3       	in	r24, 0x12	; 18
+  b2:	80 68       	ori	r24, 0x80	; 128
+  b4:	82 bb       	out	0x12, r24	; 18
+  b6:	08 95       	ret
+
+000000b8 <nrf24_read_buf>:
+}
+
+//Процедура чтения буфера
+void nrf24_read_buf(uint8_t addr,uint8_t *p_buf,uint8_t bytes)
+{
+  b8:	cf 92       	push	r12
+  ba:	df 92       	push	r13
+  bc:	ff 92       	push	r15
+  be:	0f 93       	push	r16
+  c0:	1f 93       	push	r17
+  c2:	cf 93       	push	r28
+  c4:	df 93       	push	r29
+  c6:	d8 2f       	mov	r29, r24
+  c8:	6b 01       	movw	r12, r22
+  ca:	f4 2e       	mov	r15, r20
+	CSN_ON();							//прижимаем ногу CS к земле
+  cc:	82 b3       	in	r24, 0x12	; 18
+  ce:	8f 77       	andi	r24, 0x7F	; 127
+  d0:	82 bb       	out	0x12, r24	; 18
+	spi_send_byte(addr);				//отправляем адрес
+  d2:	8d 2f       	mov	r24, r29
+  d4:	20 d3       	rcall	.+1600   	; 0x716 <spi_send_byte>
+	//цикл на нужное количество байт
+	for (uint8_t i = 0; i < bytes; i++) 
+  d6:	c0 e0       	ldi	r28, 0x00	; 0
+  d8:	08 c0       	rjmp	.+16     	; 0xea <nrf24_read_buf+0x32>
+	{
+		p_buf[i] = spi_change_byte(addr);//получаем очередной байт
+  da:	86 01       	movw	r16, r12
+  dc:	0c 0f       	add	r16, r28
+  de:	11 1d       	adc	r17, r1
+  e0:	8d 2f       	mov	r24, r29
+  e2:	1d d3       	rcall	.+1594   	; 0x71e <spi_change_byte>
+  e4:	f8 01       	movw	r30, r16
+  e6:	80 83       	st	Z, r24
+void nrf24_read_buf(uint8_t addr,uint8_t *p_buf,uint8_t bytes)
+{
+	CSN_ON();							//прижимаем ногу CS к земле
+	spi_send_byte(addr);				//отправляем адрес
+	//цикл на нужное количество байт
+	for (uint8_t i = 0; i < bytes; i++) 
+  e8:	cf 5f       	subi	r28, 0xFF	; 255
+  ea:	cf 15       	cp	r28, r15
+  ec:	b0 f3       	brcs	.-20     	; 0xda <nrf24_read_buf+0x22>
+	{
+		p_buf[i] = spi_change_byte(addr);//получаем очередной байт
+	}
+	CSN_OFF();							//поднимаем ногу CS
+  ee:	82 b3       	in	r24, 0x12	; 18
+  f0:	80 68       	ori	r24, 0x80	; 128
+  f2:	82 bb       	out	0x12, r24	; 18
+}
+  f4:	df 91       	pop	r29
+  f6:	cf 91       	pop	r28
+  f8:	1f 91       	pop	r17
+  fa:	0f 91       	pop	r16
+  fc:	ff 90       	pop	r15
+  fe:	df 90       	pop	r13
+ 100:	cf 90       	pop	r12
+ 102:	08 95       	ret
+
+00000104 <nrf24_write_buf>:
+
+//Процедура записи буфера
+void nrf24_write_buf(uint8_t addr,uint8_t *p_buf,uint8_t bytes)	
+{
+ 104:	0f 93       	push	r16
+ 106:	1f 93       	push	r17
+ 108:	cf 93       	push	r28
+ 10a:	df 93       	push	r29
+ 10c:	8b 01       	movw	r16, r22
+ 10e:	d4 2f       	mov	r29, r20
+	addr |= W_REGISTER;					//включаем бит записи в адрес
+	CSN_ON();							//прижимаем ногу CS к земле
+ 110:	92 b3       	in	r25, 0x12	; 18
+ 112:	9f 77       	andi	r25, 0x7F	; 127
+ 114:	92 bb       	out	0x12, r25	; 18
+	spi_send_byte(addr);				//отправляем адрес
+ 116:	80 62       	ori	r24, 0x20	; 32
+ 118:	fe d2       	rcall	.+1532   	; 0x716 <spi_send_byte>
+ 11a:	82 e0       	ldi	r24, 0x02	; 2
+ 11c:	8a 95       	dec	r24
+ 11e:	f1 f7       	brne	.-4      	; 0x11c <nrf24_write_buf+0x18>
+ 120:	00 c0       	rjmp	.+0      	; 0x122 <nrf24_write_buf+0x1e>
+	_delay_us(1);						//задержка
+	//цикл на нужное количество байт
+	for (uint8_t i = 0; i < bytes; i++) 
+ 122:	c0 e0       	ldi	r28, 0x00	; 0
+ 124:	06 c0       	rjmp	.+12     	; 0x132 <nrf24_write_buf+0x2e>
+	{
+		spi_send_byte(p_buf[i]);		//отправляем очередной байт
+ 126:	f8 01       	movw	r30, r16
+ 128:	ec 0f       	add	r30, r28
+ 12a:	f1 1d       	adc	r31, r1
+ 12c:	80 81       	ld	r24, Z
+ 12e:	f3 d2       	rcall	.+1510   	; 0x716 <spi_send_byte>
+	addr |= W_REGISTER;					//включаем бит записи в адрес
+	CSN_ON();							//прижимаем ногу CS к земле
+	spi_send_byte(addr);				//отправляем адрес
+	_delay_us(1);						//задержка
+	//цикл на нужное количество байт
+	for (uint8_t i = 0; i < bytes; i++) 
+ 130:	cf 5f       	subi	r28, 0xFF	; 255
+ 132:	cd 17       	cp	r28, r29
+ 134:	c0 f3       	brcs	.-16     	; 0x126 <nrf24_write_buf+0x22>
+	{
+		spi_send_byte(p_buf[i]);		//отправляем очередной байт
+	}
+	CSN_OFF();							//поднимаем ногу CS
+ 136:	82 b3       	in	r24, 0x12	; 18
+ 138:	80 68       	ori	r24, 0x80	; 128
+ 13a:	82 bb       	out	0x12, r24	; 18
+}
+ 13c:	df 91       	pop	r29
+ 13e:	cf 91       	pop	r28
+ 140:	1f 91       	pop	r17
+ 142:	0f 91       	pop	r16
+ 144:	08 95       	ret
+
+00000146 <nrf24_flush_rx>:
+
+//Процедура очистки буфера приема
+void nrf24_flush_rx(void)
+{
+	uint8_t dt = FLUSH_RX;				//переменная с командой очистки
+	CSN_ON();							//прижимаем ногу CS к земле
+ 146:	82 b3       	in	r24, 0x12	; 18
+ 148:	8f 77       	andi	r24, 0x7F	; 127
+ 14a:	82 bb       	out	0x12, r24	; 18
+	spi_send_byte(dt);					//отправка команды
+ 14c:	82 ee       	ldi	r24, 0xE2	; 226
+ 14e:	e3 d2       	rcall	.+1478   	; 0x716 <spi_send_byte>
+ 150:	82 e0       	ldi	r24, 0x02	; 2
+ 152:	8a 95       	dec	r24
+ 154:	f1 f7       	brne	.-4      	; 0x152 <nrf24_flush_rx+0xc>
+ 156:	00 c0       	rjmp	.+0      	; 0x158 <nrf24_flush_rx+0x12>
+	_delay_us(1);						//задержка 
+	CSN_OFF();							//поднимаем ногу CS
+ 158:	82 b3       	in	r24, 0x12	; 18
+ 15a:	80 68       	ori	r24, 0x80	; 128
+ 15c:	82 bb       	out	0x12, r24	; 18
+ 15e:	08 95       	ret
+
+00000160 <nrf24_flush_tx>:
+
+//Процедура очистки буфера передачи
+void nrf24_flush_tx(void)
+{
+	uint8_t dt = FLUSH_TX;				//переменная с командой очистки
+	CSN_ON();							//прижимаем ногу CS к земле
+ 160:	82 b3       	in	r24, 0x12	; 18
+ 162:	8f 77       	andi	r24, 0x7F	; 127
+ 164:	82 bb       	out	0x12, r24	; 18
+	spi_send_byte(dt);					//отправка команды
+ 166:	81 ee       	ldi	r24, 0xE1	; 225
+ 168:	d6 d2       	rcall	.+1452   	; 0x716 <spi_send_byte>
+ 16a:	82 e0       	ldi	r24, 0x02	; 2
+ 16c:	8a 95       	dec	r24
+ 16e:	f1 f7       	brne	.-4      	; 0x16c <nrf24_flush_tx+0xc>
+ 170:	00 c0       	rjmp	.+0      	; 0x172 <nrf24_flush_tx+0x12>
+	_delay_us(1);						//задержка 
+	CSN_OFF();							//поднимаем ногу CS
+ 172:	82 b3       	in	r24, 0x12	; 18
+ 174:	80 68       	ori	r24, 0x80	; 128
+ 176:	82 bb       	out	0x12, r24	; 18
+ 178:	08 95       	ret
+
+0000017a <nrf24_rx_mode>:
+
+//Процедура включение режима приемника
+void nrf24_rx_mode(void)
+{
+	uint8_t regval = 0x00;				//переменная для значения регистра
+	regval = nrf24_read_reg(CONFIG);	//сохраняем значение регистра конфигурации
+ 17a:	80 e0       	ldi	r24, 0x00	; 0
+ 17c:	70 df       	rcall	.-288    	; 0x5e <nrf24_read_reg>
+	//разбудим модуль и переведём его в режим приёмника, включив биты PWR_UP и PRIM_RX
+	regval |= (1<<PWR_UP)|(1<<PRIM_RX);	
+ 17e:	68 2f       	mov	r22, r24
+ 180:	63 60       	ori	r22, 0x03	; 3
+	nrf24_write_reg(CONFIG,regval);		//возвращаем значение регистра статуса
+ 182:	80 e0       	ldi	r24, 0x00	; 0
+ 184:	7c df       	rcall	.-264    	; 0x7e <nrf24_write_reg>
+	//записываем  адрес передатчика
+	nrf24_write_buf(TX_ADDR, tx_addr_1, TX_ADR_WIDTH);	
+ 186:	43 e0       	ldi	r20, 0x03	; 3
+ 188:	60 e6       	ldi	r22, 0x60	; 96
+ 18a:	70 e0       	ldi	r23, 0x00	; 0
+ 18c:	80 e1       	ldi	r24, 0x10	; 16
+ 18e:	ba df       	rcall	.-140    	; 0x104 <nrf24_write_buf>
+	//записываем адрес приемника
+	nrf24_write_buf(RX_ADDR_P0, tx_addr_1, TX_ADR_WIDTH);	
+ 190:	43 e0       	ldi	r20, 0x03	; 3
+ 192:	60 e6       	ldi	r22, 0x60	; 96
+ 194:	70 e0       	ldi	r23, 0x00	; 0
+ 196:	8a e0       	ldi	r24, 0x0A	; 10
+ 198:	b5 df       	rcall	.-150    	; 0x104 <nrf24_write_buf>
+	CE_SET();							//поднимаем ногу CE
+ 19a:	88 b3       	in	r24, 0x18	; 24
+ 19c:	81 60       	ori	r24, 0x01	; 1
+ 19e:	88 bb       	out	0x18, r24	; 24
+ 1a0:	8b e2       	ldi	r24, 0x2B	; 43
+ 1a2:	91 e0       	ldi	r25, 0x01	; 1
+ 1a4:	01 97       	sbiw	r24, 0x01	; 1
+ 1a6:	f1 f7       	brne	.-4      	; 0x1a4 <nrf24_rx_mode+0x2a>
+ 1a8:	00 c0       	rjmp	.+0      	; 0x1aa <nrf24_rx_mode+0x30>
+ 1aa:	00 00       	nop
+	_delay_us(150);						//задержка минимум 130 мкс
+	//очистка буферов
+	nrf24_flush_rx();
+ 1ac:	cc df       	rcall	.-104    	; 0x146 <nrf24_flush_rx>
+	nrf24_flush_tx();
+ 1ae:	d8 df       	rcall	.-80     	; 0x160 <nrf24_flush_tx>
+ 1b0:	08 95       	ret
+
+000001b2 <nrf24_tx_mode>:
+
+//Процедура включения режима передатчика
+void nrf24_tx_mode(void)
+{
+	//записываем адрес передатчика
+	nrf24_write_buf(TX_ADDR, tx_addr_0, TX_ADR_WIDTH);		
+ 1b2:	43 e0       	ldi	r20, 0x03	; 3
+ 1b4:	63 e6       	ldi	r22, 0x63	; 99
+ 1b6:	70 e0       	ldi	r23, 0x00	; 0
+ 1b8:	80 e1       	ldi	r24, 0x10	; 16
+ 1ba:	a4 df       	rcall	.-184    	; 0x104 <nrf24_write_buf>
+	//записываем адрес приемника
+	nrf24_write_buf(RX_ADDR_P0, tx_addr_0, TX_ADR_WIDTH);	
+ 1bc:	43 e0       	ldi	r20, 0x03	; 3
+ 1be:	63 e6       	ldi	r22, 0x63	; 99
+ 1c0:	70 e0       	ldi	r23, 0x00	; 0
+ 1c2:	8a e0       	ldi	r24, 0x0A	; 10
+ 1c4:	9f df       	rcall	.-194    	; 0x104 <nrf24_write_buf>
+	CE_RESET();							//опускаем ногу CE
+ 1c6:	88 b3       	in	r24, 0x18	; 24
+ 1c8:	8e 7f       	andi	r24, 0xFE	; 254
+ 1ca:	88 bb       	out	0x18, r24	; 24
+	//очищаем оба буфера
+	nrf24_flush_rx();
+ 1cc:	bc df       	rcall	.-136    	; 0x146 <nrf24_flush_rx>
+	nrf24_flush_tx();
+ 1ce:	c8 df       	rcall	.-112    	; 0x160 <nrf24_flush_tx>
+ 1d0:	08 95       	ret
+
+000001d2 <nrf24_transmit>:
+}
+
+//Процедура передачи данных в модуль
+void nrf24_transmit(uint8_t addr,uint8_t *p_buf,uint8_t bytes)
+{
+ 1d2:	0f 93       	push	r16
+ 1d4:	1f 93       	push	r17
+ 1d6:	cf 93       	push	r28
+ 1d8:	df 93       	push	r29
+ 1da:	8b 01       	movw	r16, r22
+ 1dc:	d4 2f       	mov	r29, r20
+	CE_RESET();						//опускаем ногу CE
+ 1de:	98 b3       	in	r25, 0x18	; 24
+ 1e0:	9e 7f       	andi	r25, 0xFE	; 254
+ 1e2:	98 bb       	out	0x18, r25	; 24
+	CSN_ON();						//прижимаем ногу CS к земле
+ 1e4:	92 b3       	in	r25, 0x12	; 18
+ 1e6:	9f 77       	andi	r25, 0x7F	; 127
+ 1e8:	92 bb       	out	0x12, r25	; 18
+	spi_send_byte(addr);			//отправляем адрес
+ 1ea:	95 d2       	rcall	.+1322   	; 0x716 <spi_send_byte>
+ 1ec:	82 e0       	ldi	r24, 0x02	; 2
+ 1ee:	8a 95       	dec	r24
+ 1f0:	f1 f7       	brne	.-4      	; 0x1ee <nrf24_transmit+0x1c>
+ 1f2:	00 c0       	rjmp	.+0      	; 0x1f4 <nrf24_transmit+0x22>
+	_delay_us(1);					//задержка
+	//цикл на нужное количество байт
+	for (uint8_t i = 0; i < bytes; i++) 
+ 1f4:	c0 e0       	ldi	r28, 0x00	; 0
+ 1f6:	06 c0       	rjmp	.+12     	; 0x204 <__EEPROM_REGION_LENGTH__+0x4>
+	{
+		spi_send_byte(p_buf[i]);	//отправляем очередной байт
+ 1f8:	f8 01       	movw	r30, r16
+ 1fa:	ec 0f       	add	r30, r28
+ 1fc:	f1 1d       	adc	r31, r1
+ 1fe:	80 81       	ld	r24, Z
+ 200:	8a d2       	rcall	.+1300   	; 0x716 <spi_send_byte>
+	CE_RESET();						//опускаем ногу CE
+	CSN_ON();						//прижимаем ногу CS к земле
+	spi_send_byte(addr);			//отправляем адрес
+	_delay_us(1);					//задержка
+	//цикл на нужное количество байт
+	for (uint8_t i = 0; i < bytes; i++) 
+ 202:	cf 5f       	subi	r28, 0xFF	; 255
+ 204:	cd 17       	cp	r28, r29
+ 206:	c0 f3       	brcs	.-16     	; 0x1f8 <nrf24_transmit+0x26>
+	{
+		spi_send_byte(p_buf[i]);	//отправляем очередной байт
+	}
+	CSN_OFF();						//поднимаем ногу CS
+ 208:	82 b3       	in	r24, 0x12	; 18
+ 20a:	80 68       	ori	r24, 0x80	; 128
+ 20c:	82 bb       	out	0x12, r24	; 18
+	CE_SET();						//Поднимаем ногу CE
+ 20e:	88 b3       	in	r24, 0x18	; 24
+ 210:	81 60       	ori	r24, 0x01	; 1
+ 212:	88 bb       	out	0x18, r24	; 24
+}
+ 214:	df 91       	pop	r29
+ 216:	cf 91       	pop	r28
+ 218:	1f 91       	pop	r17
+ 21a:	0f 91       	pop	r16
+ 21c:	08 95       	ret
+
+0000021e <nrf24_send>:
+
+//Процедура отправки данных в эфир
+void nrf24_send(uint8_t *p_buf)
+{
+ 21e:	0f 93       	push	r16
+ 220:	1f 93       	push	r17
+ 222:	cf 93       	push	r28
+ 224:	8c 01       	movw	r16, r24
+	char sreg_temp = SREG;				//сохраним значение регистра статуса
+ 226:	cf b7       	in	r28, 0x3f	; 63
+	cli();								//запрещаем прерывания
+ 228:	f8 94       	cli
+		
+	uint8_t regval = 0x00;				//переменная для отправки в конфигурационный регистр
+	nrf24_tx_mode();					//включаем режим передачи
+ 22a:	c3 df       	rcall	.-122    	; 0x1b2 <nrf24_tx_mode>
+	regval = nrf24_read_reg(CONFIG);	//сохраняем значения конфигурационного региста
+ 22c:	80 e0       	ldi	r24, 0x00	; 0
+ 22e:	17 df       	rcall	.-466    	; 0x5e <nrf24_read_reg>
+ 230:	8e 7f       	andi	r24, 0xFE	; 254
+	//если модуль ушел в спящий режим, то разбудим его, включив бит PWR_UP и выключив PRIM_RX
+	regval |= (1<<PWR_UP);					
+	regval &= ~(1<<PRIM_RX);
+ 232:	68 2f       	mov	r22, r24
+ 234:	62 60       	ori	r22, 0x02	; 2
+	nrf24_write_reg(CONFIG, regval);	//записываем новое значение конфигурационного регистра
+ 236:	80 e0       	ldi	r24, 0x00	; 0
+ 238:	22 df       	rcall	.-444    	; 0x7e <nrf24_write_reg>
+ 23a:	8b e2       	ldi	r24, 0x2B	; 43
+ 23c:	91 e0       	ldi	r25, 0x01	; 1
+ 23e:	01 97       	sbiw	r24, 0x01	; 1
+ 240:	f1 f7       	brne	.-4      	; 0x23e <nrf24_send+0x20>
+ 242:	00 c0       	rjmp	.+0      	; 0x244 <nrf24_send+0x26>
+ 244:	00 00       	nop
+	_delay_us(150);						//задержка минимум 130 мкс
+	nrf24_transmit(WR_TX_PLOAD, p_buf, TX_PLOAD_WIDTH);//отправка данных
+ 246:	40 e2       	ldi	r20, 0x20	; 32
+ 248:	b8 01       	movw	r22, r16
+ 24a:	80 ea       	ldi	r24, 0xA0	; 160
+ 24c:	c2 df       	rcall	.-124    	; 0x1d2 <nrf24_transmit>
+	CE_SET();							//поднимаем ногу CE
+ 24e:	88 b3       	in	r24, 0x18	; 24
+ 250:	81 60       	ori	r24, 0x01	; 1
+ 252:	88 bb       	out	0x18, r24	; 24
+ 254:	98 e2       	ldi	r25, 0x28	; 40
+ 256:	9a 95       	dec	r25
+ 258:	f1 f7       	brne	.-4      	; 0x256 <nrf24_send+0x38>
+	_delay_us(15);						//задержка 10us
+	CE_RESET();							//опускаем ногу CE
+ 25a:	88 b3       	in	r24, 0x18	; 24
+ 25c:	8e 7f       	andi	r24, 0xFE	; 254
+ 25e:	88 bb       	out	0x18, r24	; 24
+	
+	SREG = sreg_temp;					//вернем значение регистра статуса в исходное состояние
+ 260:	cf bf       	out	0x3f, r28	; 63
+}
+ 262:	cf 91       	pop	r28
+ 264:	1f 91       	pop	r17
+ 266:	0f 91       	pop	r16
+ 268:	08 95       	ret
+
+0000026a <nrf24_pins_init>:
+
+//Процедура инициализации пинов, подключенных к радиомодулю
+void nrf24_pins_init(void)
+{
+	CE_DDR |= 1<<CE_DD;					//CE на выход
+ 26a:	87 b3       	in	r24, 0x17	; 23
+ 26c:	81 60       	ori	r24, 0x01	; 1
+ 26e:	87 bb       	out	0x17, r24	; 23
+	CE_PORT |= 1<<CE_PIN;				//высокий уровень на CE
+ 270:	88 b3       	in	r24, 0x18	; 24
+ 272:	81 60       	ori	r24, 0x01	; 1
+ 274:	88 bb       	out	0x18, r24	; 24
+	
+	CSN_DDR |= 1<<CSN_DD;				//CSN на выход
+ 276:	81 b3       	in	r24, 0x11	; 17
+ 278:	80 68       	ori	r24, 0x80	; 128
+ 27a:	81 bb       	out	0x11, r24	; 17
+	CSN_PORT |= 1<<CSN_PIN;				//высокий уровень на CSN
+ 27c:	82 b3       	in	r24, 0x12	; 18
+ 27e:	80 68       	ori	r24, 0x80	; 128
+ 280:	82 bb       	out	0x12, r24	; 18
+	
+	IRQ_DDR |= 0<<IRQ_DD;				//IRQ на вход
+ 282:	81 b3       	in	r24, 0x11	; 17
+ 284:	81 bb       	out	0x11, r24	; 17
+	IRQ_PORT |= 0<<IRQ_PIN;				//отключаем внутренний пуллап
+ 286:	82 b3       	in	r24, 0x12	; 18
+ 288:	82 bb       	out	0x12, r24	; 18
+ 28a:	08 95       	ret
+
+0000028c <nrf24_init>:
+}
+
+//Процедура инициализации модуля
+void nrf24_init(void)
+{
+	nrf24_pins_init();					//инициализируем пины
+ 28c:	ee df       	rcall	.-36     	; 0x26a <nrf24_pins_init>
+	CE_RESET();							//опускаем к земле вывод CE
+ 28e:	88 b3       	in	r24, 0x18	; 24
+ 290:	8e 7f       	andi	r24, 0xFE	; 254
+ 292:	88 bb       	out	0x18, r24	; 24
+ 294:	8f e0       	ldi	r24, 0x0F	; 15
+ 296:	97 e2       	ldi	r25, 0x27	; 39
+ 298:	01 97       	sbiw	r24, 0x01	; 1
+ 29a:	f1 f7       	brne	.-4      	; 0x298 <nrf24_init+0xc>
+ 29c:	00 c0       	rjmp	.+0      	; 0x29e <nrf24_init+0x12>
+ 29e:	00 00       	nop
+	_delay_us(5000);					//ждем 5 мс
+	//записываем конфигурационный байт, 
+	//устанавливаем бит PWR_UP bit, включаем CRC(1 байт) &Prim_RX:0
+	nrf24_write_reg(CONFIG, 0x0a);		
+ 2a0:	6a e0       	ldi	r22, 0x0A	; 10
+ 2a2:	80 e0       	ldi	r24, 0x00	; 0
+ 2a4:	ec de       	rcall	.-552    	; 0x7e <nrf24_write_reg>
+ 2a6:	8f e0       	ldi	r24, 0x0F	; 15
+ 2a8:	97 e2       	ldi	r25, 0x27	; 39
+ 2aa:	01 97       	sbiw	r24, 0x01	; 1
+ 2ac:	f1 f7       	brne	.-4      	; 0x2aa <nrf24_init+0x1e>
+ 2ae:	00 c0       	rjmp	.+0      	; 0x2b0 <nrf24_init+0x24>
+ 2b0:	00 00       	nop
+	_delay_us(5000);					//ждем 5 мс
+	nrf24_write_reg(EN_AA, 0x00);		//отключаем автоподтверждение
+ 2b2:	60 e0       	ldi	r22, 0x00	; 0
+ 2b4:	81 e0       	ldi	r24, 0x01	; 1
+ 2b6:	e3 de       	rcall	.-570    	; 0x7e <nrf24_write_reg>
+	nrf24_write_reg(EN_RXADDR, 0x01);	//разрешаем Pipe0
+ 2b8:	61 e0       	ldi	r22, 0x01	; 1
+ 2ba:	82 e0       	ldi	r24, 0x02	; 2
+ 2bc:	e0 de       	rcall	.-576    	; 0x7e <nrf24_write_reg>
+	nrf24_write_reg(SETUP_AW, 0x01);	//устанавливаем размер адреса 3 байта
+ 2be:	61 e0       	ldi	r22, 0x01	; 1
+ 2c0:	83 e0       	ldi	r24, 0x03	; 3
+ 2c2:	dd de       	rcall	.-582    	; 0x7e <nrf24_write_reg>
+	nrf24_write_reg(SETUP_RETR, 0x00);	//устанавливаем период авто ретрансляции 1500мкс, 15 попыток
+ 2c4:	60 e0       	ldi	r22, 0x00	; 0
+ 2c6:	84 e0       	ldi	r24, 0x04	; 4
+ 2c8:	da de       	rcall	.-588    	; 0x7e <nrf24_write_reg>
+	nrf24_toggle_features();			//активируем дополнительные команды
+ 2ca:	e7 de       	rcall	.-562    	; 0x9a <nrf24_toggle_features>
+	nrf24_write_reg(FEATURE, 0x07);		//устанавливаем стандартные значения регистра FEATURE 
+ 2cc:	67 e0       	ldi	r22, 0x07	; 7
+ 2ce:	8d e1       	ldi	r24, 0x1D	; 29
+ 2d0:	d6 de       	rcall	.-596    	; 0x7e <nrf24_write_reg>
+	nrf24_write_reg(DYNPD, 0);			//отключаем динамический размер полезной нагрузки
+ 2d2:	60 e0       	ldi	r22, 0x00	; 0
+ 2d4:	8c e1       	ldi	r24, 0x1C	; 28
+ 2d6:	d3 de       	rcall	.-602    	; 0x7e <nrf24_write_reg>
+	nrf24_write_reg(STATUS, 0x70);		//опускаем флаг прерывания
+ 2d8:	60 e7       	ldi	r22, 0x70	; 112
+ 2da:	87 e0       	ldi	r24, 0x07	; 7
+ 2dc:	d0 de       	rcall	.-608    	; 0x7e <nrf24_write_reg>
+	nrf24_write_reg(RF_CH, 76);			//устанавливаем частоту 2476 MHz
+ 2de:	6c e4       	ldi	r22, 0x4C	; 76
+ 2e0:	85 e0       	ldi	r24, 0x05	; 5
+ 2e2:	cd de       	rcall	.-614    	; 0x7e <nrf24_write_reg>
+	//Выходноая мощность 0dBm, Скорость передачи: 1Mbps
+	nrf24_write_reg(RF_SETUP, 0x06);	//для установки -6dBm: 0x04, -12dBm: 0x02, -18dBm: 0x00
+ 2e4:	66 e0       	ldi	r22, 0x06	; 6
+ 2e6:	86 e0       	ldi	r24, 0x06	; 6
+ 2e8:	ca de       	rcall	.-620    	; 0x7e <nrf24_write_reg>
+	nrf24_write_buf(TX_ADDR, tx_addr_0, TX_ADR_WIDTH);		//запись адреса передачи
+ 2ea:	43 e0       	ldi	r20, 0x03	; 3
+ 2ec:	63 e6       	ldi	r22, 0x63	; 99
+ 2ee:	70 e0       	ldi	r23, 0x00	; 0
+ 2f0:	80 e1       	ldi	r24, 0x10	; 16
+ 2f2:	08 df       	rcall	.-496    	; 0x104 <nrf24_write_buf>
+	nrf24_write_buf(RX_ADDR_P1, tx_addr_0, TX_ADR_WIDTH);	//запись адреса приема
+ 2f4:	43 e0       	ldi	r20, 0x03	; 3
+ 2f6:	63 e6       	ldi	r22, 0x63	; 99
+ 2f8:	70 e0       	ldi	r23, 0x00	; 0
+ 2fa:	8b e0       	ldi	r24, 0x0B	; 11
+ 2fc:	03 df       	rcall	.-506    	; 0x104 <nrf24_write_buf>
+	nrf24_write_reg(RX_PW_P0, TX_PLOAD_WIDTH); //устанавливаем число байт полезной нагрузки
+ 2fe:	60 e2       	ldi	r22, 0x20	; 32
+ 300:	81 e1       	ldi	r24, 0x11	; 17
+ 302:	bd de       	rcall	.-646    	; 0x7e <nrf24_write_reg>
+	nrf24_rx_mode();					//пока уходим в режим приёмника
+ 304:	3a df       	rcall	.-396    	; 0x17a <nrf24_rx_mode>
+ 306:	08 95       	ret
+
+00000308 <irq_callback>:
+}
+
+//Процедура обработки прерывания
+void irq_callback(void)
+{
+ 308:	cf 93       	push	r28
+ 30a:	df 93       	push	r29
+	char sreg_temp = SREG;				//сохраним значение регистра статуса
+ 30c:	df b7       	in	r29, 0x3f	; 63
+	cli();								//запрещаем прерывания
+ 30e:	f8 94       	cli
+ 310:	8a e1       	ldi	r24, 0x1A	; 26
+ 312:	8a 95       	dec	r24
+ 314:	f1 f7       	brne	.-4      	; 0x312 <irq_callback+0xa>
+ 316:	00 c0       	rjmp	.+0      	; 0x318 <irq_callback+0x10>
+
+	uint8_t status = 0x01;				//переменная статуса
+	_delay_us(10);			
+	status = nrf24_read_reg(STATUS);	//читаем значения регистра статуса
+ 318:	87 e0       	ldi	r24, 0x07	; 7
+ 31a:	a1 de       	rcall	.-702    	; 0x5e <nrf24_read_reg>
+ 31c:	c8 2f       	mov	r28, r24
+	if (status & RX_DR)					//если есть данные на прием
+ 31e:	86 ff       	sbrs	r24, 6
+ 320:	0b c0       	rjmp	.+22     	; 0x338 <irq_callback+0x30>
+	{
+		nrf24_read_buf(RD_RX_PLOAD, rx_buf, TX_PLOAD_WIDTH);	//чтение буфера
+ 322:	40 e2       	ldi	r20, 0x20	; 32
+ 324:	62 e3       	ldi	r22, 0x32	; 50
+ 326:	71 e0       	ldi	r23, 0x01	; 1
+ 328:	81 e6       	ldi	r24, 0x61	; 97
+ 32a:	c6 de       	rcall	.-628    	; 0xb8 <nrf24_read_buf>
+		nrf24_write_reg(STATUS, 0x40);	//запись в регистр статуса 1 в шестой бит, обнуление остальных
+ 32c:	60 e4       	ldi	r22, 0x40	; 64
+ 32e:	87 e0       	ldi	r24, 0x07	; 7
+ 330:	a6 de       	rcall	.-692    	; 0x7e <nrf24_write_reg>
+		f_rx = 1;						//поднимаем флаг приема
+ 332:	81 e0       	ldi	r24, 0x01	; 1
+ 334:	80 93 11 01 	sts	0x0111, r24	; 0x800111 <f_rx>
+	}
+	if (status & TX_DS)					//если данные успешно отправлены
+ 338:	c5 ff       	sbrs	r28, 5
+ 33a:	08 c0       	rjmp	.+16     	; 0x34c <irq_callback+0x44>
+	{
+		nrf24_write_reg(STATUS, 0x20);	//очищаем все биты кроме пятого
+ 33c:	60 e2       	ldi	r22, 0x20	; 32
+ 33e:	87 e0       	ldi	r24, 0x07	; 7
+ 340:	9e de       	rcall	.-708    	; 0x7e <nrf24_write_reg>
+		nrf24_rx_mode();				//переходим в режим приема
+ 342:	1b df       	rcall	.-458    	; 0x17a <nrf24_rx_mode>
+		f_tx = 1;						//поднимаем флаг передачи
+ 344:	81 e0       	ldi	r24, 0x01	; 1
+ 346:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <__data_end>
+ 34a:	07 c0       	rjmp	.+14     	; 0x35a <irq_callback+0x52>
+	}
+	else if (status & MAX_RT)			//если превышение количества попыток отправки
+ 34c:	c4 ff       	sbrs	r28, 4
+ 34e:	05 c0       	rjmp	.+10     	; 0x35a <irq_callback+0x52>
+	{
+		nrf24_write_reg(STATUS, 0x10);	//однуление всех остальных битов, кроме 4го
+ 350:	60 e1       	ldi	r22, 0x10	; 16
+ 352:	87 e0       	ldi	r24, 0x07	; 7
+ 354:	94 de       	rcall	.-728    	; 0x7e <nrf24_write_reg>
+		nrf24_flush_tx();				//очистка буфера отправки
+ 356:	04 df       	rcall	.-504    	; 0x160 <nrf24_flush_tx>
+		nrf24_rx_mode();				//переходим в режим приема
+ 358:	10 df       	rcall	.-480    	; 0x17a <nrf24_rx_mode>
+	}
+	
+	SREG = sreg_temp;					//вернем значение регистра статуса в исходное состояние
+ 35a:	df bf       	out	0x3f, r29	; 63
+}
+ 35c:	df 91       	pop	r29
+ 35e:	cf 91       	pop	r28
+ 360:	08 95       	ret
+
+00000362 <gpio_init>:
+extern uint8_t rx_buf[TX_PLOAD_WIDTH];	//буфер приема
+
+//Процедура инициализации портов ввода/вывода
+void gpio_init(void)
+{
+	LED_DDR |= 1<<LED_DD;				//пин светодиода на выход
+ 362:	81 b3       	in	r24, 0x11	; 17
+ 364:	80 64       	ori	r24, 0x40	; 64
+ 366:	81 bb       	out	0x11, r24	; 17
+	LED_PORT |= 0<<LED_PIN;				//низкий уровень на выводе светодиода
+ 368:	82 b3       	in	r24, 0x12	; 18
+ 36a:	82 bb       	out	0x12, r24	; 18
+ 36c:	08 95       	ret
+
+0000036e <timer_init>:
+	//Режим: CTC top=OCR1A (сброс по совпадению)
+	//Выходы отключены
+	//Период : 1 мс
+	//Включено прерывание по совпадению
+	#ifdef ATMEGA8
+	TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<WGM11) | (0<<WGM10);
+ 36e:	1f bc       	out	0x2f, r1	; 47
+	TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (1<<WGM12) | (0<<CS12) | (1<<CS11) | (1<<CS10);
+ 370:	8b e0       	ldi	r24, 0x0B	; 11
+ 372:	8e bd       	out	0x2e, r24	; 46
+	TCNT1H=0x00;
+ 374:	1d bc       	out	0x2d, r1	; 45
+	TCNT1L=0x00;
+ 376:	1c bc       	out	0x2c, r1	; 44
+	ICR1H=0x00;
+ 378:	17 bc       	out	0x27, r1	; 39
+	ICR1L=0x00;
+ 37a:	16 bc       	out	0x26, r1	; 38
+	OCR1AH=0x00;
+ 37c:	1b bc       	out	0x2b, r1	; 43
+	OCR1AL=0x7C;
+ 37e:	8c e7       	ldi	r24, 0x7C	; 124
+ 380:	8a bd       	out	0x2a, r24	; 42
+	OCR1BH=0x00;
+ 382:	19 bc       	out	0x29, r1	; 41
+	OCR1BL=0x00;
+ 384:	18 bc       	out	0x28, r1	; 40
+ 386:	08 95       	ret
+
+00000388 <interrupt_init>:
+void interrupt_init(void)
+{
+	//включаем внешнее прерывания INT0, INT1 по спаду
+	//включаем прерывание по сравнению А таймера 1
+	#ifdef ATMEGA8
+	GICR|=(1<<INT1) | (1<<INT0);
+ 388:	8b b7       	in	r24, 0x3b	; 59
+ 38a:	80 6c       	ori	r24, 0xC0	; 192
+ 38c:	8b bf       	out	0x3b, r24	; 59
+	MCUCR=(0<<ISC11) | (0<<ISC10) | (1<<ISC01) | (0<<ISC00);
+ 38e:	82 e0       	ldi	r24, 0x02	; 2
+ 390:	85 bf       	out	0x35, r24	; 53
+	GIFR=(0<<INTF1) | (1<<INTF0);
+ 392:	80 e4       	ldi	r24, 0x40	; 64
+ 394:	8a bf       	out	0x3a, r24	; 58
+	
+	TIMSK=(1<<OCIE2) | (0<<TOIE2) | (0<<TICIE1) | (1<<OCIE1A) | (0<<OCIE1B) | (0<<TOIE1) | (0<<TOIE0);
+ 396:	80 e9       	ldi	r24, 0x90	; 144
+ 398:	89 bf       	out	0x39, r24	; 57
+ 39a:	08 95       	ret
+
+0000039c <blink_led>:
+}
+
+//Процедура моргания светодиодом
+void blink_led(uint8_t blink_counter)
+{
+	while (blink_counter)		//пока счетчик не равен 0
+ 39c:	16 c0       	rjmp	.+44     	; 0x3ca <blink_led+0x2e>
+	{
+		LED_ON();				//включаем светодиод
+ 39e:	92 b3       	in	r25, 0x12	; 18
+ 3a0:	90 64       	ori	r25, 0x40	; 64
+ 3a2:	92 bb       	out	0x12, r25	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 3a4:	ef e1       	ldi	r30, 0x1F	; 31
+ 3a6:	fe e4       	ldi	r31, 0x4E	; 78
+ 3a8:	31 97       	sbiw	r30, 0x01	; 1
+ 3aa:	f1 f7       	brne	.-4      	; 0x3a8 <blink_led+0xc>
+ 3ac:	00 c0       	rjmp	.+0      	; 0x3ae <blink_led+0x12>
+ 3ae:	00 00       	nop
+		_delay_ms(10);			//ждем
+		LED_OFF();				//выключаем светодиод
+ 3b0:	92 b3       	in	r25, 0x12	; 18
+ 3b2:	9f 7b       	andi	r25, 0xBF	; 191
+ 3b4:	92 bb       	out	0x12, r25	; 18
+ 3b6:	ff e7       	ldi	r31, 0x7F	; 127
+ 3b8:	28 e3       	ldi	r18, 0x38	; 56
+ 3ba:	31 e0       	ldi	r19, 0x01	; 1
+ 3bc:	f1 50       	subi	r31, 0x01	; 1
+ 3be:	20 40       	sbci	r18, 0x00	; 0
+ 3c0:	30 40       	sbci	r19, 0x00	; 0
+ 3c2:	e1 f7       	brne	.-8      	; 0x3bc <blink_led+0x20>
+ 3c4:	00 c0       	rjmp	.+0      	; 0x3c6 <blink_led+0x2a>
+ 3c6:	00 00       	nop
+		_delay_ms(50);			//ждем
+		blink_counter--;		//декрементируем счетчик
+ 3c8:	81 50       	subi	r24, 0x01	; 1
+}
+
+//Процедура моргания светодиодом
+void blink_led(uint8_t blink_counter)
+{
+	while (blink_counter)		//пока счетчик не равен 0
+ 3ca:	81 11       	cpse	r24, r1
+ 3cc:	e8 cf       	rjmp	.-48     	; 0x39e <blink_led+0x2>
+		_delay_ms(10);			//ждем
+		LED_OFF();				//выключаем светодиод
+		_delay_ms(50);			//ждем
+		blink_counter--;		//декрементируем счетчик
+	}
+}
+ 3ce:	08 95       	ret
+
+000003d0 <nrf24l01_receive>:
+
+//Процедура приема радиомодуля
+void nrf24l01_receive(void)
+{
+	if(f_rx)	//если флаг приема поднят (флаг поднимается по внешнему прерыванию от радиомодуля)
+ 3d0:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <f_rx>
+ 3d4:	88 23       	and	r24, r24
+ 3d6:	09 f4       	brne	.+2      	; 0x3da <nrf24l01_receive+0xa>
+ 3d8:	5d c0       	rjmp	.+186    	; 0x494 <__stack+0x35>
+	{
+		if (rx_buf[0] == SOFT_RESET)	//если пришла команда программного сброса
+ 3da:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <rx_buf>
+ 3de:	8e 3f       	cpi	r24, 0xFE	; 254
+ 3e0:	79 f4       	brne	.+30     	; 0x400 <__DATA_REGION_LENGTH__>
+		{
+			f_pushed = 0;				//опускаем флаг нажатия
+ 3e2:	10 92 56 01 	sts	0x0156, r1	; 0x800156 <f_pushed>
+			ms_counter = 0;				//обнуляем значение времени
+ 3e6:	10 92 57 01 	sts	0x0157, r1	; 0x800157 <ms_counter>
+ 3ea:	10 92 58 01 	sts	0x0158, r1	; 0x800158 <ms_counter+0x1>
+ 3ee:	10 92 59 01 	sts	0x0159, r1	; 0x800159 <ms_counter+0x2>
+ 3f2:	10 92 5a 01 	sts	0x015A, r1	; 0x80015a <ms_counter+0x3>
+			usart_println("reset");
+ 3f6:	86 e6       	ldi	r24, 0x66	; 102
+ 3f8:	90 e0       	ldi	r25, 0x00	; 0
+ 3fa:	c8 d1       	rcall	.+912    	; 0x78c <usart_println>
+			blink_led(2);				//сигнализируем морганием светодиода
+ 3fc:	82 e0       	ldi	r24, 0x02	; 2
+ 3fe:	ce df       	rcall	.-100    	; 0x39c <blink_led>
+		}
+					
+		if (rx_buf[0] == OUR_ADDR)		//если первый принятый байт совпадает с адресом кнопки
+ 400:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <rx_buf>
+ 404:	81 11       	cpse	r24, r1
+ 406:	44 c0       	rjmp	.+136    	; 0x490 <__stack+0x31>
+		{
+			if (f_pushed)				//если поднят флаг нажатия
+ 408:	80 91 56 01 	lds	r24, 0x0156	; 0x800156 <f_pushed>
+ 40c:	88 23       	and	r24, r24
+ 40e:	91 f0       	breq	.+36     	; 0x434 <__DATA_REGION_LENGTH__+0x34>
+			{
+				tx_buf[0] = OUR_ADDR;	//записываем в первый байт адрес
+ 410:	e2 e1       	ldi	r30, 0x12	; 18
+ 412:	f1 e0       	ldi	r31, 0x01	; 1
+ 414:	10 82       	st	Z, r1
+				(*(unsigned long*)&tx_buf[1]) = time_ms;	//во второй, преобразованный в тип unsigned long, записываем значение времени
+ 416:	80 91 52 01 	lds	r24, 0x0152	; 0x800152 <time_ms>
+ 41a:	90 91 53 01 	lds	r25, 0x0153	; 0x800153 <time_ms+0x1>
+ 41e:	a0 91 54 01 	lds	r26, 0x0154	; 0x800154 <time_ms+0x2>
+ 422:	b0 91 55 01 	lds	r27, 0x0155	; 0x800155 <time_ms+0x3>
+ 426:	81 83       	std	Z+1, r24	; 0x01
+ 428:	92 83       	std	Z+2, r25	; 0x02
+ 42a:	a3 83       	std	Z+3, r26	; 0x03
+ 42c:	b4 83       	std	Z+4, r27	; 0x04
+				nrf24_send(tx_buf);		//отправляем посылку в эфир
+ 42e:	cf 01       	movw	r24, r30
+ 430:	f6 de       	rcall	.-532    	; 0x21e <nrf24_send>
+ 432:	0c c0       	rjmp	.+24     	; 0x44c <__DATA_REGION_LENGTH__+0x4c>
+			}
+			else						//если нажатия не бвло
+			{
+				tx_buf[0] = OUR_ADDR;	//записываем в первый байт адрес
+ 434:	e2 e1       	ldi	r30, 0x12	; 18
+ 436:	f1 e0       	ldi	r31, 0x01	; 1
+ 438:	10 82       	st	Z, r1
+				(*(unsigned long*)&tx_buf[1]) = NOT_PUSHED;//во второй, преобразованный в тип unsigned long, записываем значение ненажатого состояния
+ 43a:	8f ef       	ldi	r24, 0xFF	; 255
+ 43c:	9f ef       	ldi	r25, 0xFF	; 255
+ 43e:	dc 01       	movw	r26, r24
+ 440:	81 83       	std	Z+1, r24	; 0x01
+ 442:	92 83       	std	Z+2, r25	; 0x02
+ 444:	a3 83       	std	Z+3, r26	; 0x03
+ 446:	b4 83       	std	Z+4, r27	; 0x04
+				nrf24_send(tx_buf);		//отправляем посылку в эфир
+ 448:	cf 01       	movw	r24, r30
+ 44a:	e9 de       	rcall	.-558    	; 0x21e <nrf24_send>
+			}
+			if (rx_buf[1] == 0x01)		//если поступила команда управления светодиодом
+ 44c:	80 91 33 01 	lds	r24, 0x0133	; 0x800133 <rx_buf+0x1>
+ 450:	81 30       	cpi	r24, 0x01	; 1
+ 452:	71 f4       	brne	.+28     	; 0x470 <__stack+0x11>
+			{	//устанавливаем сосстояние светодиода в соответствии с пришедшей командой
+				if(rx_buf[2] == LED_STATE_ON) LED_ON();		
+ 454:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <rx_buf+0x2>
+ 458:	81 30       	cpi	r24, 0x01	; 1
+ 45a:	19 f4       	brne	.+6      	; 0x462 <__stack+0x3>
+ 45c:	82 b3       	in	r24, 0x12	; 18
+ 45e:	80 64       	ori	r24, 0x40	; 64
+ 460:	82 bb       	out	0x12, r24	; 18
+				if(rx_buf[2] == LED_STATE_OFF) LED_OFF();
+ 462:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <rx_buf+0x2>
+ 466:	81 11       	cpse	r24, r1
+ 468:	03 c0       	rjmp	.+6      	; 0x470 <__stack+0x11>
+ 46a:	82 b3       	in	r24, 0x12	; 18
+ 46c:	8f 7b       	andi	r24, 0xBF	; 191
+ 46e:	82 bb       	out	0x12, r24	; 18
+			}
+			if (rx_buf[1] == SOFT_RESET)//если пришла команда программного сброса
+ 470:	80 91 33 01 	lds	r24, 0x0133	; 0x800133 <rx_buf+0x1>
+ 474:	8e 3f       	cpi	r24, 0xFE	; 254
+ 476:	61 f4       	brne	.+24     	; 0x490 <__stack+0x31>
+			{
+				f_pushed = 0;			//опускаем флаг нажатия
+ 478:	10 92 56 01 	sts	0x0156, r1	; 0x800156 <f_pushed>
+				ms_counter = 0;			//обнуляем значение времени
+ 47c:	10 92 57 01 	sts	0x0157, r1	; 0x800157 <ms_counter>
+ 480:	10 92 58 01 	sts	0x0158, r1	; 0x800158 <ms_counter+0x1>
+ 484:	10 92 59 01 	sts	0x0159, r1	; 0x800159 <ms_counter+0x2>
+ 488:	10 92 5a 01 	sts	0x015A, r1	; 0x80015a <ms_counter+0x3>
+				blink_led(2);			//сигнализируем морганием светодиода
+ 48c:	82 e0       	ldi	r24, 0x02	; 2
+ 48e:	86 df       	rcall	.-244    	; 0x39c <blink_led>
+			}
+		}
+		f_rx = 0;						//опускаем флаг приема
+ 490:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <f_rx>
+ 494:	08 95       	ret
+
+00000496 <__vector_11>:
+}
+#endif
+
+#ifdef ATMEGA8
+ISR(USART_RXC_vect)
+{
+ 496:	1f 92       	push	r1
+ 498:	0f 92       	push	r0
+ 49a:	0f b6       	in	r0, 0x3f	; 63
+ 49c:	0f 92       	push	r0
+ 49e:	11 24       	eor	r1, r1
+	//здесь можно прописать действия по получению данных по последовательному порту
+}
+ 4a0:	0f 90       	pop	r0
+ 4a2:	0f be       	out	0x3f, r0	; 63
+ 4a4:	0f 90       	pop	r0
+ 4a6:	1f 90       	pop	r1
+ 4a8:	18 95       	reti
+
+000004aa <__vector_1>:
+#endif
+
+//Вектор прерывания INT0
+ISR(INT0_vect)
+{
+ 4aa:	1f 92       	push	r1
+ 4ac:	0f 92       	push	r0
+ 4ae:	0f b6       	in	r0, 0x3f	; 63
+ 4b0:	0f 92       	push	r0
+ 4b2:	11 24       	eor	r1, r1
+ 4b4:	2f 93       	push	r18
+ 4b6:	3f 93       	push	r19
+ 4b8:	4f 93       	push	r20
+ 4ba:	5f 93       	push	r21
+ 4bc:	6f 93       	push	r22
+ 4be:	7f 93       	push	r23
+ 4c0:	8f 93       	push	r24
+ 4c2:	9f 93       	push	r25
+ 4c4:	af 93       	push	r26
+ 4c6:	bf 93       	push	r27
+ 4c8:	ef 93       	push	r30
+ 4ca:	ff 93       	push	r31
+	irq_callback();			//обрабатываем прерывание от радиомодуля
+ 4cc:	1d df       	rcall	.-454    	; 0x308 <irq_callback>
+}
+ 4ce:	ff 91       	pop	r31
+ 4d0:	ef 91       	pop	r30
+ 4d2:	bf 91       	pop	r27
+ 4d4:	af 91       	pop	r26
+ 4d6:	9f 91       	pop	r25
+ 4d8:	8f 91       	pop	r24
+ 4da:	7f 91       	pop	r23
+ 4dc:	6f 91       	pop	r22
+ 4de:	5f 91       	pop	r21
+ 4e0:	4f 91       	pop	r20
+ 4e2:	3f 91       	pop	r19
+ 4e4:	2f 91       	pop	r18
+ 4e6:	0f 90       	pop	r0
+ 4e8:	0f be       	out	0x3f, r0	; 63
+ 4ea:	0f 90       	pop	r0
+ 4ec:	1f 90       	pop	r1
+ 4ee:	18 95       	reti
+
+000004f0 <__vector_2>:
+//Вектор прерывания INT1
+ISR(INT1_vect)
+{
+ 4f0:	1f 92       	push	r1
+ 4f2:	0f 92       	push	r0
+ 4f4:	0f b6       	in	r0, 0x3f	; 63
+ 4f6:	0f 92       	push	r0
+ 4f8:	11 24       	eor	r1, r1
+ 4fa:	8f 93       	push	r24
+ 4fc:	9f 93       	push	r25
+ 4fe:	af 93       	push	r26
+ 500:	bf 93       	push	r27
+	if(!f_pushed)				//если опущен флаг нажатия
+ 502:	80 91 56 01 	lds	r24, 0x0156	; 0x800156 <f_pushed>
+ 506:	81 11       	cpse	r24, r1
+ 508:	13 c0       	rjmp	.+38     	; 0x530 <__vector_2+0x40>
+	{
+		f_pushed = 1;			//поднимаем флаг нажатия
+ 50a:	81 e0       	ldi	r24, 0x01	; 1
+ 50c:	80 93 56 01 	sts	0x0156, r24	; 0x800156 <f_pushed>
+		time_ms = ms_counter;	//сохраняем количество мс
+ 510:	80 91 57 01 	lds	r24, 0x0157	; 0x800157 <ms_counter>
+ 514:	90 91 58 01 	lds	r25, 0x0158	; 0x800158 <ms_counter+0x1>
+ 518:	a0 91 59 01 	lds	r26, 0x0159	; 0x800159 <ms_counter+0x2>
+ 51c:	b0 91 5a 01 	lds	r27, 0x015A	; 0x80015a <ms_counter+0x3>
+ 520:	80 93 52 01 	sts	0x0152, r24	; 0x800152 <time_ms>
+ 524:	90 93 53 01 	sts	0x0153, r25	; 0x800153 <time_ms+0x1>
+ 528:	a0 93 54 01 	sts	0x0154, r26	; 0x800154 <time_ms+0x2>
+ 52c:	b0 93 55 01 	sts	0x0155, r27	; 0x800155 <time_ms+0x3>
+	}
+}
+ 530:	bf 91       	pop	r27
+ 532:	af 91       	pop	r26
+ 534:	9f 91       	pop	r25
+ 536:	8f 91       	pop	r24
+ 538:	0f 90       	pop	r0
+ 53a:	0f be       	out	0x3f, r0	; 63
+ 53c:	0f 90       	pop	r0
+ 53e:	1f 90       	pop	r1
+ 540:	18 95       	reti
+
+00000542 <t1_compa_callback>:
+
+//Процедура обработки прерывания по сравнению А таймера 1
+void t1_compa_callback(void)
+{
+	ms_counter++;			//считаем мс
+ 542:	80 91 57 01 	lds	r24, 0x0157	; 0x800157 <ms_counter>
+ 546:	90 91 58 01 	lds	r25, 0x0158	; 0x800158 <ms_counter+0x1>
+ 54a:	a0 91 59 01 	lds	r26, 0x0159	; 0x800159 <ms_counter+0x2>
+ 54e:	b0 91 5a 01 	lds	r27, 0x015A	; 0x80015a <ms_counter+0x3>
+ 552:	01 96       	adiw	r24, 0x01	; 1
+ 554:	a1 1d       	adc	r26, r1
+ 556:	b1 1d       	adc	r27, r1
+ 558:	80 93 57 01 	sts	0x0157, r24	; 0x800157 <ms_counter>
+ 55c:	90 93 58 01 	sts	0x0158, r25	; 0x800158 <ms_counter+0x1>
+ 560:	a0 93 59 01 	sts	0x0159, r26	; 0x800159 <ms_counter+0x2>
+ 564:	b0 93 5a 01 	sts	0x015A, r27	; 0x80015a <ms_counter+0x3>
+ 568:	08 95       	ret
+
+0000056a <__vector_6>:
+}
+
+//Вектор прерывания по сравнению А таймера 1
+ISR(TIMER1_COMPA_vect)
+{
+ 56a:	1f 92       	push	r1
+ 56c:	0f 92       	push	r0
+ 56e:	0f b6       	in	r0, 0x3f	; 63
+ 570:	0f 92       	push	r0
+ 572:	11 24       	eor	r1, r1
+ 574:	2f 93       	push	r18
+ 576:	3f 93       	push	r19
+ 578:	4f 93       	push	r20
+ 57a:	5f 93       	push	r21
+ 57c:	6f 93       	push	r22
+ 57e:	7f 93       	push	r23
+ 580:	8f 93       	push	r24
+ 582:	9f 93       	push	r25
+ 584:	af 93       	push	r26
+ 586:	bf 93       	push	r27
+ 588:	ef 93       	push	r30
+ 58a:	ff 93       	push	r31
+	t1_compa_callback();	//обрабатываем прерывание
+ 58c:	da df       	rcall	.-76     	; 0x542 <t1_compa_callback>
+}
+ 58e:	ff 91       	pop	r31
+ 590:	ef 91       	pop	r30
+ 592:	bf 91       	pop	r27
+ 594:	af 91       	pop	r26
+ 596:	9f 91       	pop	r25
+ 598:	8f 91       	pop	r24
+ 59a:	7f 91       	pop	r23
+ 59c:	6f 91       	pop	r22
+ 59e:	5f 91       	pop	r21
+ 5a0:	4f 91       	pop	r20
+ 5a2:	3f 91       	pop	r19
+ 5a4:	2f 91       	pop	r18
+ 5a6:	0f 90       	pop	r0
+ 5a8:	0f be       	out	0x3f, r0	; 63
+ 5aa:	0f 90       	pop	r0
+ 5ac:	1f 90       	pop	r1
+ 5ae:	18 95       	reti
+
+000005b0 <nrf_info_print>:
+
+//Процедура вывода в порт данных из регистров радиомодуля
+void nrf_info_print(void)
+{
+ 5b0:	0f 93       	push	r16
+ 5b2:	1f 93       	push	r17
+ 5b4:	cf 93       	push	r28
+ 5b6:	df 93       	push	r29
+ 5b8:	00 d0       	rcall	.+0      	; 0x5ba <nrf_info_print+0xa>
+ 5ba:	1f 92       	push	r1
+ 5bc:	cd b7       	in	r28, 0x3d	; 61
+ 5be:	de b7       	in	r29, 0x3e	; 62
+	uint8_t buf[TX_ADR_WIDTH] = {0};				//буфер для чтения адресов модуля
+ 5c0:	19 82       	std	Y+1, r1	; 0x01
+ 5c2:	1a 82       	std	Y+2, r1	; 0x02
+ 5c4:	1b 82       	std	Y+3, r1	; 0x03
+	uint8_t dt_reg = 0;								//переменная для чтения значения регистра
+	
+	dt_reg = nrf24_read_reg(CONFIG);				//читаем регистр CONFIG
+ 5c6:	80 e0       	ldi	r24, 0x00	; 0
+ 5c8:	4a dd       	rcall	.-1388   	; 0x5e <nrf24_read_reg>
+	sprintf(str, "CONFIG: 0x%02X\r\n", dt_reg);		//
+ 5ca:	1f 92       	push	r1
+ 5cc:	8f 93       	push	r24
+ 5ce:	8c e6       	ldi	r24, 0x6C	; 108
+ 5d0:	90 e0       	ldi	r25, 0x00	; 0
+ 5d2:	9f 93       	push	r25
+ 5d4:	8f 93       	push	r24
+ 5d6:	0b e5       	ldi	r16, 0x5B	; 91
+ 5d8:	11 e0       	ldi	r17, 0x01	; 1
+ 5da:	1f 93       	push	r17
+ 5dc:	0f 93       	push	r16
+ 5de:	f7 d0       	rcall	.+494    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 5e0:	c8 01       	movw	r24, r16
+ 5e2:	b7 d0       	rcall	.+366    	; 0x752 <usart_print>
+	dt_reg = nrf24_read_reg(EN_AA);					//читаем регистр EN_AA
+ 5e4:	81 e0       	ldi	r24, 0x01	; 1
+ 5e6:	3b dd       	rcall	.-1418   	; 0x5e <nrf24_read_reg>
+	sprintf(str, "EN_AA: 0x%02X\r\n", dt_reg);		//
+ 5e8:	1f 92       	push	r1
+ 5ea:	8f 93       	push	r24
+ 5ec:	8d e7       	ldi	r24, 0x7D	; 125
+ 5ee:	90 e0       	ldi	r25, 0x00	; 0
+ 5f0:	9f 93       	push	r25
+ 5f2:	8f 93       	push	r24
+ 5f4:	1f 93       	push	r17
+ 5f6:	0f 93       	push	r16
+ 5f8:	ea d0       	rcall	.+468    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 5fa:	c8 01       	movw	r24, r16
+ 5fc:	aa d0       	rcall	.+340    	; 0x752 <usart_print>
+	dt_reg = nrf24_read_reg(EN_RXADDR);				//читаем регистр EN_RXADDR
+ 5fe:	82 e0       	ldi	r24, 0x02	; 2
+ 600:	2e dd       	rcall	.-1444   	; 0x5e <nrf24_read_reg>
+	sprintf(str, "EN_RXADDR: 0x%02X\r\n", dt_reg);	//
+ 602:	1f 92       	push	r1
+ 604:	8f 93       	push	r24
+ 606:	8d e8       	ldi	r24, 0x8D	; 141
+ 608:	90 e0       	ldi	r25, 0x00	; 0
+ 60a:	9f 93       	push	r25
+ 60c:	8f 93       	push	r24
+ 60e:	1f 93       	push	r17
+ 610:	0f 93       	push	r16
+ 612:	dd d0       	rcall	.+442    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 614:	c8 01       	movw	r24, r16
+ 616:	9d d0       	rcall	.+314    	; 0x752 <usart_print>
+	dt_reg = nrf24_read_reg(STATUS);				//читаем регистр STATUS
+ 618:	87 e0       	ldi	r24, 0x07	; 7
+ 61a:	21 dd       	rcall	.-1470   	; 0x5e <nrf24_read_reg>
+	sprintf(str, "STATUS: 0x%02X\r\n", dt_reg);		//
+ 61c:	1f 92       	push	r1
+ 61e:	8f 93       	push	r24
+ 620:	81 ea       	ldi	r24, 0xA1	; 161
+ 622:	90 e0       	ldi	r25, 0x00	; 0
+ 624:	9f 93       	push	r25
+ 626:	8f 93       	push	r24
+ 628:	1f 93       	push	r17
+ 62a:	0f 93       	push	r16
+ 62c:	d0 d0       	rcall	.+416    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 62e:	c8 01       	movw	r24, r16
+ 630:	90 d0       	rcall	.+288    	; 0x752 <usart_print>
+	dt_reg = nrf24_read_reg(RF_SETUP);				//читаем регистр RF_SETUP
+ 632:	86 e0       	ldi	r24, 0x06	; 6
+ 634:	14 dd       	rcall	.-1496   	; 0x5e <nrf24_read_reg>
+	sprintf(str, "RF_SETUP: 0x%02X\r\n", dt_reg);	//
+ 636:	1f 92       	push	r1
+ 638:	8f 93       	push	r24
+ 63a:	82 eb       	ldi	r24, 0xB2	; 178
+ 63c:	90 e0       	ldi	r25, 0x00	; 0
+ 63e:	9f 93       	push	r25
+ 640:	8f 93       	push	r24
+ 642:	1f 93       	push	r17
+ 644:	0f 93       	push	r16
+ 646:	c3 d0       	rcall	.+390    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 648:	c8 01       	movw	r24, r16
+ 64a:	83 d0       	rcall	.+262    	; 0x752 <usart_print>
+	nrf24_read_buf(TX_ADDR,buf,3);					//читаем буфер TX_ADDR
+ 64c:	43 e0       	ldi	r20, 0x03	; 3
+ 64e:	be 01       	movw	r22, r28
+ 650:	6f 5f       	subi	r22, 0xFF	; 255
+ 652:	7f 4f       	sbci	r23, 0xFF	; 255
+ 654:	80 e1       	ldi	r24, 0x10	; 16
+ 656:	30 dd       	rcall	.-1440   	; 0xb8 <nrf24_read_buf>
+	sprintf(str, "TX_ADDR: 0x%02X, 0x%02X, 0x%02X\r\n", buf[0], buf[1], buf[2]);
+ 658:	2b 81       	ldd	r18, Y+3	; 0x03
+ 65a:	9a 81       	ldd	r25, Y+2	; 0x02
+ 65c:	89 81       	ldd	r24, Y+1	; 0x01
+ 65e:	1f 92       	push	r1
+ 660:	2f 93       	push	r18
+ 662:	1f 92       	push	r1
+ 664:	9f 93       	push	r25
+ 666:	1f 92       	push	r1
+ 668:	8f 93       	push	r24
+ 66a:	85 ec       	ldi	r24, 0xC5	; 197
+ 66c:	90 e0       	ldi	r25, 0x00	; 0
+ 66e:	9f 93       	push	r25
+ 670:	8f 93       	push	r24
+ 672:	1f 93       	push	r17
+ 674:	0f 93       	push	r16
+ 676:	ab d0       	rcall	.+342    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 678:	0f b6       	in	r0, 0x3f	; 63
+ 67a:	f8 94       	cli
+ 67c:	de bf       	out	0x3e, r29	; 62
+ 67e:	0f be       	out	0x3f, r0	; 63
+ 680:	cd bf       	out	0x3d, r28	; 61
+ 682:	c8 01       	movw	r24, r16
+ 684:	66 d0       	rcall	.+204    	; 0x752 <usart_print>
+	nrf24_read_buf(RX_ADDR_P1,buf,3);				//читаем буфер RX_ADDR_P1
+ 686:	43 e0       	ldi	r20, 0x03	; 3
+ 688:	be 01       	movw	r22, r28
+ 68a:	6f 5f       	subi	r22, 0xFF	; 255
+ 68c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 68e:	8b e0       	ldi	r24, 0x0B	; 11
+ 690:	13 dd       	rcall	.-1498   	; 0xb8 <nrf24_read_buf>
+	sprintf(str, "RX_ADDR: 0x%02X, 0x%02X, 0x%02X\r\n", buf[0], buf[1], buf[2]);
+ 692:	2b 81       	ldd	r18, Y+3	; 0x03
+ 694:	9a 81       	ldd	r25, Y+2	; 0x02
+ 696:	89 81       	ldd	r24, Y+1	; 0x01
+ 698:	1f 92       	push	r1
+ 69a:	2f 93       	push	r18
+ 69c:	1f 92       	push	r1
+ 69e:	9f 93       	push	r25
+ 6a0:	1f 92       	push	r1
+ 6a2:	8f 93       	push	r24
+ 6a4:	87 ee       	ldi	r24, 0xE7	; 231
+ 6a6:	90 e0       	ldi	r25, 0x00	; 0
+ 6a8:	9f 93       	push	r25
+ 6aa:	8f 93       	push	r24
+ 6ac:	1f 93       	push	r17
+ 6ae:	0f 93       	push	r16
+ 6b0:	8e d0       	rcall	.+284    	; 0x7ce <sprintf>
+	usart_print(str);								//выводим данные в порт
+ 6b2:	c8 01       	movw	r24, r16
+ 6b4:	4e d0       	rcall	.+156    	; 0x752 <usart_print>
+}
+ 6b6:	0f b6       	in	r0, 0x3f	; 63
+ 6b8:	f8 94       	cli
+ 6ba:	de bf       	out	0x3e, r29	; 62
+ 6bc:	0f be       	out	0x3f, r0	; 63
+ 6be:	cd bf       	out	0x3d, r28	; 61
+ 6c0:	0f 90       	pop	r0
+ 6c2:	0f 90       	pop	r0
+ 6c4:	0f 90       	pop	r0
+ 6c6:	df 91       	pop	r29
+ 6c8:	cf 91       	pop	r28
+ 6ca:	1f 91       	pop	r17
+ 6cc:	0f 91       	pop	r16
+ 6ce:	08 95       	ret
+
+000006d0 <main>:
+
+//Основная программа
+int main(void)
+{
+	spi_init();				//инициализируем SPI
+ 6d0:	19 d0       	rcall	.+50     	; 0x704 <spi_init>
+	//_delay_ms(1000);		//задержка для корректного включения SPI 
+	//(в некоторых случаях отсутствие задержки или недостаточная задержка по времени приводила к уходу в ребут при включении питания)
+	interrupt_init();		//инициализируем прерывания
+ 6d2:	5a de       	rcall	.-844    	; 0x388 <interrupt_init>
+	gpio_init();			//инициализируем порты ввода-вывода
+ 6d4:	46 de       	rcall	.-884    	; 0x362 <gpio_init>
+	timer_init();			//инициализируем таймер
+ 6d6:	4b de       	rcall	.-874    	; 0x36e <timer_init>
+	usart_init(103);		//инициализируем USART 9600 бод
+ 6d8:	87 e6       	ldi	r24, 0x67	; 103
+ 6da:	90 e0       	ldi	r25, 0x00	; 0
+ 6dc:	25 d0       	rcall	.+74     	; 0x728 <usart_init>
+	//usart_init(8);		//инициализируем USART 115200 бод
+	usart_println("start");	//отправка стартовой строки в порт
+ 6de:	89 e0       	ldi	r24, 0x09	; 9
+ 6e0:	91 e0       	ldi	r25, 0x01	; 1
+ 6e2:	54 d0       	rcall	.+168    	; 0x78c <usart_println>
+	nrf24_init();			//инициализируем радиомодуль
+ 6e4:	d3 dd       	rcall	.-1114   	; 0x28c <nrf24_init>
+	blink_led(5);			//моргаем светодиодом
+ 6e6:	85 e0       	ldi	r24, 0x05	; 5
+ 6e8:	59 de       	rcall	.-846    	; 0x39c <blink_led>
+	nrf_info_print();		//выводим значения регистров в порт
+ 6ea:	62 df       	rcall	.-316    	; 0x5b0 <nrf_info_print>
+__attribute__ ((__always_inline__))
+void wdt_enable (const uint8_t value)
+{
+	if (_SFR_IO_REG_P (_WD_CONTROL_REG))
+	{
+		__asm__ __volatile__ (
+ 6ec:	9f e0       	ldi	r25, 0x0F	; 15
+ 6ee:	88 e1       	ldi	r24, 0x18	; 24
+ 6f0:	0f b6       	in	r0, 0x3f	; 63
+ 6f2:	f8 94       	cli
+ 6f4:	a8 95       	wdr
+ 6f6:	81 bd       	out	0x21, r24	; 33
+ 6f8:	0f be       	out	0x3f, r0	; 63
+ 6fa:	91 bd       	out	0x21, r25	; 33
+
+	wdt_enable(WDTO_2S);	//включаем сторожевой таймер
+
+	sei();					//глобальное разрешение прерываний
+ 6fc:	78 94       	sei
+	
+	while (1)
+	{
+		nrf24l01_receive();	//обрабатываем прием радиомодуля
+ 6fe:	68 de       	rcall	.-816    	; 0x3d0 <nrf24l01_receive>
+		//проверяем, не пришел ли запрос от ведущего
+
+		wdt_reset();		//сбрасываем сторожевой таймер
+ 700:	a8 95       	wdr
+ 702:	fd cf       	rjmp	.-6      	; 0x6fe <main+0x2e>
+
+00000704 <spi_init>:
+
+//Процедура инициализации SPI
+void spi_init(void)
+{
+	#ifdef ATMEGA8
+	DDRB |= ((1<<PORTB2)|(1<<PORTB3)|(1<<PORTB5));		//ножки SPI на выход
+ 704:	87 b3       	in	r24, 0x17	; 23
+ 706:	8c 62       	ori	r24, 0x2C	; 44
+ 708:	87 bb       	out	0x17, r24	; 23
+	PORTB &= ~((1<<PORTB2)|(1<<PORTB3)|(1<<PORTB5));	//низкий уровень
+ 70a:	88 b3       	in	r24, 0x18	; 24
+ 70c:	83 7d       	andi	r24, 0xD3	; 211
+ 70e:	88 bb       	out	0x18, r24	; 24
+	
+	#ifdef ATMEGA88
+	DDRB |= ((1<<PB2)|(1<<PB3)|(1<<PB5));				//ножки SPI на выход
+	PORTB &= ~((1<<PB2)|(1<<PB3)|(1<<PB5));				//низкий уровень
+	#endif
+	SPCR = (0<<SPIE) | (1<<SPE) | (0<<DORD) | (1<<MSTR) | (0<<CPOL) | (0<<CPHA) | (0<<SPR1) | (0<<SPR0);
+ 710:	80 e5       	ldi	r24, 0x50	; 80
+ 712:	8d b9       	out	0x0d, r24	; 13
+ 714:	08 95       	ret
+
+00000716 <spi_send_byte>:
+}
+
+//Процедура отправки байта 
+void spi_send_byte(uint8_t byte)
+{
+	SPDR = byte;				//записываем байт в регистр
+ 716:	8f b9       	out	0x0f, r24	; 15
+	while(!(SPSR & (1<<SPIF)));	//подождем пока данные передадутся
+ 718:	77 9b       	sbis	0x0e, 7	; 14
+ 71a:	fe cf       	rjmp	.-4      	; 0x718 <spi_send_byte+0x2>
+}
+ 71c:	08 95       	ret
+
+0000071e <spi_change_byte>:
+
+//Функция приема/отправки байта
+uint8_t spi_change_byte(uint8_t byte)
+{
+	SPDR = byte;				//записываем байт в регистр
+ 71e:	8f b9       	out	0x0f, r24	; 15
+	while(!(SPSR & (1<<SPIF)));	//подождем пока данные передадутся (обменяются)
+ 720:	77 9b       	sbis	0x0e, 7	; 14
+ 722:	fe cf       	rjmp	.-4      	; 0x720 <spi_change_byte+0x2>
+	return SPDR;				//возвращаем принятое значение
+ 724:	8f b1       	in	r24, 0x0f	; 15
+ 726:	08 95       	ret
+
+00000728 <usart_init>:
+//Процедура инициализации USART
+void usart_init(unsigned int ubrr)
+{
+	#ifdef ATMEGA8
+	//настроим пины приема и передачи на вход
+	DDRD |= (0<<DDD1) | (0<<DDD0);
+ 728:	21 b3       	in	r18, 0x11	; 17
+ 72a:	21 bb       	out	0x11, r18	; 17
+	PORTD |= (0<<PORTD1) | (0<<PORTD0);
+ 72c:	22 b3       	in	r18, 0x12	; 18
+ 72e:	22 bb       	out	0x12, r18	; 18
+	//зададим скорость работы USART
+	UBRRH = (unsigned char)(ubrr>>8);
+ 730:	90 bd       	out	0x20, r25	; 32
+	UBRRL = (unsigned char)ubrr;
+ 732:	89 b9       	out	0x09, r24	; 9
+		
+	UCSRB=(1<<RXEN)|( 1<<TXEN); //включаем прием и передачу по USART
+ 734:	88 e1       	ldi	r24, 0x18	; 24
+ 736:	8a b9       	out	0x0a, r24	; 10
+	UCSRB |= (1<<RXCIE);		//разрешаем прерывание при передаче
+ 738:	8a b1       	in	r24, 0x0a	; 10
+ 73a:	80 68       	ori	r24, 0x80	; 128
+ 73c:	8a b9       	out	0x0a, r24	; 10
+	UCSRA |= (1<<U2X);			// для 8 мгц
+ 73e:	8b b1       	in	r24, 0x0b	; 11
+ 740:	82 60       	ori	r24, 0x02	; 2
+ 742:	8b b9       	out	0x0b, r24	; 11
+	UCSRC = (1<<URSEL)|(1<<USBS)|(1<<UCSZ1)|(1<<UCSZ0);// обращаемся именно к регистру UCSRC (URSEL=1),
+ 744:	8e e8       	ldi	r24, 0x8E	; 142
+ 746:	80 bd       	out	0x20, r24	; 32
+ 748:	08 95       	ret
+
+0000074a <usart_transmit>:
+
+//Процедура отправки одного байта
+void usart_transmit(unsigned char data) 
+{
+	#ifdef ATMEGA8
+	while ( !(UCSRA & (1<<UDRE)) ); //ждем опустошения буфера приема
+ 74a:	5d 9b       	sbis	0x0b, 5	; 11
+ 74c:	fe cf       	rjmp	.-4      	; 0x74a <usart_transmit>
+	UDR = data;						//записываем байт в регистр
+ 74e:	8c b9       	out	0x0c, r24	; 12
+ 750:	08 95       	ret
+
+00000752 <usart_print>:
+	#endif
+}
+
+//Процедура отправки массива
+void usart_print(char *str)
+{	//цикл по всему массиву
+ 752:	0f 93       	push	r16
+ 754:	1f 93       	push	r17
+ 756:	cf 93       	push	r28
+ 758:	df 93       	push	r29
+ 75a:	8c 01       	movw	r16, r24
+	for (int i = 0; i < strlen(str); i++)
+ 75c:	c0 e0       	ldi	r28, 0x00	; 0
+ 75e:	d0 e0       	ldi	r29, 0x00	; 0
+ 760:	06 c0       	rjmp	.+12     	; 0x76e <usart_print+0x1c>
+	{
+		usart_transmit(str[i]); //отправляем очередной байт
+ 762:	f8 01       	movw	r30, r16
+ 764:	ec 0f       	add	r30, r28
+ 766:	fd 1f       	adc	r31, r29
+ 768:	80 81       	ld	r24, Z
+ 76a:	ef df       	rcall	.-34     	; 0x74a <usart_transmit>
+}
+
+//Процедура отправки массива
+void usart_print(char *str)
+{	//цикл по всему массиву
+	for (int i = 0; i < strlen(str); i++)
+ 76c:	21 96       	adiw	r28, 0x01	; 1
+ 76e:	f8 01       	movw	r30, r16
+ 770:	01 90       	ld	r0, Z+
+ 772:	00 20       	and	r0, r0
+ 774:	e9 f7       	brne	.-6      	; 0x770 <usart_print+0x1e>
+ 776:	31 97       	sbiw	r30, 0x01	; 1
+ 778:	e0 1b       	sub	r30, r16
+ 77a:	f1 0b       	sbc	r31, r17
+ 77c:	ce 17       	cp	r28, r30
+ 77e:	df 07       	cpc	r29, r31
+ 780:	80 f3       	brcs	.-32     	; 0x762 <usart_print+0x10>
+	{
+		usart_transmit(str[i]); //отправляем очередной байт
+	}
+}
+ 782:	df 91       	pop	r29
+ 784:	cf 91       	pop	r28
+ 786:	1f 91       	pop	r17
+ 788:	0f 91       	pop	r16
+ 78a:	08 95       	ret
+
+0000078c <usart_println>:
+
+//Процедура отправки массива с переходом в начало новой строки
+void usart_println(char *str)
+{	//цикл по всему массиву
+ 78c:	0f 93       	push	r16
+ 78e:	1f 93       	push	r17
+ 790:	cf 93       	push	r28
+ 792:	df 93       	push	r29
+ 794:	8c 01       	movw	r16, r24
+	for (int i = 0; i < strlen(str); i++)
+ 796:	c0 e0       	ldi	r28, 0x00	; 0
+ 798:	d0 e0       	ldi	r29, 0x00	; 0
+ 79a:	06 c0       	rjmp	.+12     	; 0x7a8 <usart_println+0x1c>
+	{
+		usart_transmit(str[i]);  //отправляем очередной байт
+ 79c:	f8 01       	movw	r30, r16
+ 79e:	ec 0f       	add	r30, r28
+ 7a0:	fd 1f       	adc	r31, r29
+ 7a2:	80 81       	ld	r24, Z
+ 7a4:	d2 df       	rcall	.-92     	; 0x74a <usart_transmit>
+}
+
+//Процедура отправки массива с переходом в начало новой строки
+void usart_println(char *str)
+{	//цикл по всему массиву
+	for (int i = 0; i < strlen(str); i++)
+ 7a6:	21 96       	adiw	r28, 0x01	; 1
+ 7a8:	f8 01       	movw	r30, r16
+ 7aa:	01 90       	ld	r0, Z+
+ 7ac:	00 20       	and	r0, r0
+ 7ae:	e9 f7       	brne	.-6      	; 0x7aa <usart_println+0x1e>
+ 7b0:	31 97       	sbiw	r30, 0x01	; 1
+ 7b2:	e0 1b       	sub	r30, r16
+ 7b4:	f1 0b       	sbc	r31, r17
+ 7b6:	ce 17       	cp	r28, r30
+ 7b8:	df 07       	cpc	r29, r31
+ 7ba:	80 f3       	brcs	.-32     	; 0x79c <usart_println+0x10>
+	{
+		usart_transmit(str[i]);  //отправляем очередной байт
+	}
+	usart_transmit(0x0d);		//переход в начало строки
+ 7bc:	8d e0       	ldi	r24, 0x0D	; 13
+ 7be:	c5 df       	rcall	.-118    	; 0x74a <usart_transmit>
+	usart_transmit(0x0a);		//переход на новую строку
+ 7c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 7c2:	c3 df       	rcall	.-122    	; 0x74a <usart_transmit>
+ 7c4:	df 91       	pop	r29
+ 7c6:	cf 91       	pop	r28
+ 7c8:	1f 91       	pop	r17
+ 7ca:	0f 91       	pop	r16
+ 7cc:	08 95       	ret
+
+000007ce <sprintf>:
+ 7ce:	ae e0       	ldi	r26, 0x0E	; 14
+ 7d0:	b0 e0       	ldi	r27, 0x00	; 0
+ 7d2:	ec ee       	ldi	r30, 0xEC	; 236
+ 7d4:	f3 e0       	ldi	r31, 0x03	; 3
+ 7d6:	aa c2       	rjmp	.+1364   	; 0xd2c <__prologue_saves__+0x1c>
+ 7d8:	0d 89       	ldd	r16, Y+21	; 0x15
+ 7da:	1e 89       	ldd	r17, Y+22	; 0x16
+ 7dc:	86 e0       	ldi	r24, 0x06	; 6
+ 7de:	8c 83       	std	Y+4, r24	; 0x04
+ 7e0:	1a 83       	std	Y+2, r17	; 0x02
+ 7e2:	09 83       	std	Y+1, r16	; 0x01
+ 7e4:	8f ef       	ldi	r24, 0xFF	; 255
+ 7e6:	9f e7       	ldi	r25, 0x7F	; 127
+ 7e8:	9e 83       	std	Y+6, r25	; 0x06
+ 7ea:	8d 83       	std	Y+5, r24	; 0x05
+ 7ec:	ae 01       	movw	r20, r28
+ 7ee:	47 5e       	subi	r20, 0xE7	; 231
+ 7f0:	5f 4f       	sbci	r21, 0xFF	; 255
+ 7f2:	6f 89       	ldd	r22, Y+23	; 0x17
+ 7f4:	78 8d       	ldd	r23, Y+24	; 0x18
+ 7f6:	ce 01       	movw	r24, r28
+ 7f8:	01 96       	adiw	r24, 0x01	; 1
+ 7fa:	08 d0       	rcall	.+16     	; 0x80c <vfprintf>
+ 7fc:	ef 81       	ldd	r30, Y+7	; 0x07
+ 7fe:	f8 85       	ldd	r31, Y+8	; 0x08
+ 800:	e0 0f       	add	r30, r16
+ 802:	f1 1f       	adc	r31, r17
+ 804:	10 82       	st	Z, r1
+ 806:	2e 96       	adiw	r28, 0x0e	; 14
+ 808:	e4 e0       	ldi	r30, 0x04	; 4
+ 80a:	ac c2       	rjmp	.+1368   	; 0xd64 <__epilogue_restores__+0x1c>
+
+0000080c <vfprintf>:
+ 80c:	ab e0       	ldi	r26, 0x0B	; 11
+ 80e:	b0 e0       	ldi	r27, 0x00	; 0
+ 810:	eb e0       	ldi	r30, 0x0B	; 11
+ 812:	f4 e0       	ldi	r31, 0x04	; 4
+ 814:	7d c2       	rjmp	.+1274   	; 0xd10 <__prologue_saves__>
+ 816:	6c 01       	movw	r12, r24
+ 818:	7b 01       	movw	r14, r22
+ 81a:	8a 01       	movw	r16, r20
+ 81c:	fc 01       	movw	r30, r24
+ 81e:	17 82       	std	Z+7, r1	; 0x07
+ 820:	16 82       	std	Z+6, r1	; 0x06
+ 822:	83 81       	ldd	r24, Z+3	; 0x03
+ 824:	81 ff       	sbrs	r24, 1
+ 826:	bf c1       	rjmp	.+894    	; 0xba6 <vfprintf+0x39a>
+ 828:	ce 01       	movw	r24, r28
+ 82a:	01 96       	adiw	r24, 0x01	; 1
+ 82c:	3c 01       	movw	r6, r24
+ 82e:	f6 01       	movw	r30, r12
+ 830:	93 81       	ldd	r25, Z+3	; 0x03
+ 832:	f7 01       	movw	r30, r14
+ 834:	93 fd       	sbrc	r25, 3
+ 836:	85 91       	lpm	r24, Z+
+ 838:	93 ff       	sbrs	r25, 3
+ 83a:	81 91       	ld	r24, Z+
+ 83c:	7f 01       	movw	r14, r30
+ 83e:	88 23       	and	r24, r24
+ 840:	09 f4       	brne	.+2      	; 0x844 <vfprintf+0x38>
+ 842:	ad c1       	rjmp	.+858    	; 0xb9e <vfprintf+0x392>
+ 844:	85 32       	cpi	r24, 0x25	; 37
+ 846:	39 f4       	brne	.+14     	; 0x856 <vfprintf+0x4a>
+ 848:	93 fd       	sbrc	r25, 3
+ 84a:	85 91       	lpm	r24, Z+
+ 84c:	93 ff       	sbrs	r25, 3
+ 84e:	81 91       	ld	r24, Z+
+ 850:	7f 01       	movw	r14, r30
+ 852:	85 32       	cpi	r24, 0x25	; 37
+ 854:	21 f4       	brne	.+8      	; 0x85e <vfprintf+0x52>
+ 856:	b6 01       	movw	r22, r12
+ 858:	90 e0       	ldi	r25, 0x00	; 0
+ 85a:	c0 d1       	rcall	.+896    	; 0xbdc <fputc>
+ 85c:	e8 cf       	rjmp	.-48     	; 0x82e <vfprintf+0x22>
+ 85e:	91 2c       	mov	r9, r1
+ 860:	21 2c       	mov	r2, r1
+ 862:	31 2c       	mov	r3, r1
+ 864:	ff e1       	ldi	r31, 0x1F	; 31
+ 866:	f3 15       	cp	r31, r3
+ 868:	d8 f0       	brcs	.+54     	; 0x8a0 <vfprintf+0x94>
+ 86a:	8b 32       	cpi	r24, 0x2B	; 43
+ 86c:	79 f0       	breq	.+30     	; 0x88c <vfprintf+0x80>
+ 86e:	38 f4       	brcc	.+14     	; 0x87e <vfprintf+0x72>
+ 870:	80 32       	cpi	r24, 0x20	; 32
+ 872:	79 f0       	breq	.+30     	; 0x892 <vfprintf+0x86>
+ 874:	83 32       	cpi	r24, 0x23	; 35
+ 876:	a1 f4       	brne	.+40     	; 0x8a0 <vfprintf+0x94>
+ 878:	23 2d       	mov	r18, r3
+ 87a:	20 61       	ori	r18, 0x10	; 16
+ 87c:	1d c0       	rjmp	.+58     	; 0x8b8 <vfprintf+0xac>
+ 87e:	8d 32       	cpi	r24, 0x2D	; 45
+ 880:	61 f0       	breq	.+24     	; 0x89a <vfprintf+0x8e>
+ 882:	80 33       	cpi	r24, 0x30	; 48
+ 884:	69 f4       	brne	.+26     	; 0x8a0 <vfprintf+0x94>
+ 886:	23 2d       	mov	r18, r3
+ 888:	21 60       	ori	r18, 0x01	; 1
+ 88a:	16 c0       	rjmp	.+44     	; 0x8b8 <vfprintf+0xac>
+ 88c:	83 2d       	mov	r24, r3
+ 88e:	82 60       	ori	r24, 0x02	; 2
+ 890:	38 2e       	mov	r3, r24
+ 892:	e3 2d       	mov	r30, r3
+ 894:	e4 60       	ori	r30, 0x04	; 4
+ 896:	3e 2e       	mov	r3, r30
+ 898:	2a c0       	rjmp	.+84     	; 0x8ee <vfprintf+0xe2>
+ 89a:	f3 2d       	mov	r31, r3
+ 89c:	f8 60       	ori	r31, 0x08	; 8
+ 89e:	1d c0       	rjmp	.+58     	; 0x8da <vfprintf+0xce>
+ 8a0:	37 fc       	sbrc	r3, 7
+ 8a2:	2d c0       	rjmp	.+90     	; 0x8fe <vfprintf+0xf2>
+ 8a4:	20 ed       	ldi	r18, 0xD0	; 208
+ 8a6:	28 0f       	add	r18, r24
+ 8a8:	2a 30       	cpi	r18, 0x0A	; 10
+ 8aa:	40 f0       	brcs	.+16     	; 0x8bc <vfprintf+0xb0>
+ 8ac:	8e 32       	cpi	r24, 0x2E	; 46
+ 8ae:	b9 f4       	brne	.+46     	; 0x8de <vfprintf+0xd2>
+ 8b0:	36 fc       	sbrc	r3, 6
+ 8b2:	75 c1       	rjmp	.+746    	; 0xb9e <vfprintf+0x392>
+ 8b4:	23 2d       	mov	r18, r3
+ 8b6:	20 64       	ori	r18, 0x40	; 64
+ 8b8:	32 2e       	mov	r3, r18
+ 8ba:	19 c0       	rjmp	.+50     	; 0x8ee <vfprintf+0xe2>
+ 8bc:	36 fe       	sbrs	r3, 6
+ 8be:	06 c0       	rjmp	.+12     	; 0x8cc <vfprintf+0xc0>
+ 8c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 8c2:	98 9e       	mul	r9, r24
+ 8c4:	20 0d       	add	r18, r0
+ 8c6:	11 24       	eor	r1, r1
+ 8c8:	92 2e       	mov	r9, r18
+ 8ca:	11 c0       	rjmp	.+34     	; 0x8ee <vfprintf+0xe2>
+ 8cc:	ea e0       	ldi	r30, 0x0A	; 10
+ 8ce:	2e 9e       	mul	r2, r30
+ 8d0:	20 0d       	add	r18, r0
+ 8d2:	11 24       	eor	r1, r1
+ 8d4:	22 2e       	mov	r2, r18
+ 8d6:	f3 2d       	mov	r31, r3
+ 8d8:	f0 62       	ori	r31, 0x20	; 32
+ 8da:	3f 2e       	mov	r3, r31
+ 8dc:	08 c0       	rjmp	.+16     	; 0x8ee <vfprintf+0xe2>
+ 8de:	8c 36       	cpi	r24, 0x6C	; 108
+ 8e0:	21 f4       	brne	.+8      	; 0x8ea <vfprintf+0xde>
+ 8e2:	83 2d       	mov	r24, r3
+ 8e4:	80 68       	ori	r24, 0x80	; 128
+ 8e6:	38 2e       	mov	r3, r24
+ 8e8:	02 c0       	rjmp	.+4      	; 0x8ee <vfprintf+0xe2>
+ 8ea:	88 36       	cpi	r24, 0x68	; 104
+ 8ec:	41 f4       	brne	.+16     	; 0x8fe <vfprintf+0xf2>
+ 8ee:	f7 01       	movw	r30, r14
+ 8f0:	93 fd       	sbrc	r25, 3
+ 8f2:	85 91       	lpm	r24, Z+
+ 8f4:	93 ff       	sbrs	r25, 3
+ 8f6:	81 91       	ld	r24, Z+
+ 8f8:	7f 01       	movw	r14, r30
+ 8fa:	81 11       	cpse	r24, r1
+ 8fc:	b3 cf       	rjmp	.-154    	; 0x864 <vfprintf+0x58>
+ 8fe:	98 2f       	mov	r25, r24
+ 900:	9f 7d       	andi	r25, 0xDF	; 223
+ 902:	95 54       	subi	r25, 0x45	; 69
+ 904:	93 30       	cpi	r25, 0x03	; 3
+ 906:	28 f4       	brcc	.+10     	; 0x912 <vfprintf+0x106>
+ 908:	0c 5f       	subi	r16, 0xFC	; 252
+ 90a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 90c:	9f e3       	ldi	r25, 0x3F	; 63
+ 90e:	99 83       	std	Y+1, r25	; 0x01
+ 910:	0d c0       	rjmp	.+26     	; 0x92c <vfprintf+0x120>
+ 912:	83 36       	cpi	r24, 0x63	; 99
+ 914:	31 f0       	breq	.+12     	; 0x922 <vfprintf+0x116>
+ 916:	83 37       	cpi	r24, 0x73	; 115
+ 918:	71 f0       	breq	.+28     	; 0x936 <vfprintf+0x12a>
+ 91a:	83 35       	cpi	r24, 0x53	; 83
+ 91c:	09 f0       	breq	.+2      	; 0x920 <vfprintf+0x114>
+ 91e:	55 c0       	rjmp	.+170    	; 0x9ca <vfprintf+0x1be>
+ 920:	20 c0       	rjmp	.+64     	; 0x962 <vfprintf+0x156>
+ 922:	f8 01       	movw	r30, r16
+ 924:	80 81       	ld	r24, Z
+ 926:	89 83       	std	Y+1, r24	; 0x01
+ 928:	0e 5f       	subi	r16, 0xFE	; 254
+ 92a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 92c:	88 24       	eor	r8, r8
+ 92e:	83 94       	inc	r8
+ 930:	91 2c       	mov	r9, r1
+ 932:	53 01       	movw	r10, r6
+ 934:	12 c0       	rjmp	.+36     	; 0x95a <vfprintf+0x14e>
+ 936:	28 01       	movw	r4, r16
+ 938:	f2 e0       	ldi	r31, 0x02	; 2
+ 93a:	4f 0e       	add	r4, r31
+ 93c:	51 1c       	adc	r5, r1
+ 93e:	f8 01       	movw	r30, r16
+ 940:	a0 80       	ld	r10, Z
+ 942:	b1 80       	ldd	r11, Z+1	; 0x01
+ 944:	36 fe       	sbrs	r3, 6
+ 946:	03 c0       	rjmp	.+6      	; 0x94e <vfprintf+0x142>
+ 948:	69 2d       	mov	r22, r9
+ 94a:	70 e0       	ldi	r23, 0x00	; 0
+ 94c:	02 c0       	rjmp	.+4      	; 0x952 <vfprintf+0x146>
+ 94e:	6f ef       	ldi	r22, 0xFF	; 255
+ 950:	7f ef       	ldi	r23, 0xFF	; 255
+ 952:	c5 01       	movw	r24, r10
+ 954:	38 d1       	rcall	.+624    	; 0xbc6 <strnlen>
+ 956:	4c 01       	movw	r8, r24
+ 958:	82 01       	movw	r16, r4
+ 95a:	f3 2d       	mov	r31, r3
+ 95c:	ff 77       	andi	r31, 0x7F	; 127
+ 95e:	3f 2e       	mov	r3, r31
+ 960:	15 c0       	rjmp	.+42     	; 0x98c <vfprintf+0x180>
+ 962:	28 01       	movw	r4, r16
+ 964:	22 e0       	ldi	r18, 0x02	; 2
+ 966:	42 0e       	add	r4, r18
+ 968:	51 1c       	adc	r5, r1
+ 96a:	f8 01       	movw	r30, r16
+ 96c:	a0 80       	ld	r10, Z
+ 96e:	b1 80       	ldd	r11, Z+1	; 0x01
+ 970:	36 fe       	sbrs	r3, 6
+ 972:	03 c0       	rjmp	.+6      	; 0x97a <vfprintf+0x16e>
+ 974:	69 2d       	mov	r22, r9
+ 976:	70 e0       	ldi	r23, 0x00	; 0
+ 978:	02 c0       	rjmp	.+4      	; 0x97e <vfprintf+0x172>
+ 97a:	6f ef       	ldi	r22, 0xFF	; 255
+ 97c:	7f ef       	ldi	r23, 0xFF	; 255
+ 97e:	c5 01       	movw	r24, r10
+ 980:	17 d1       	rcall	.+558    	; 0xbb0 <strnlen_P>
+ 982:	4c 01       	movw	r8, r24
+ 984:	f3 2d       	mov	r31, r3
+ 986:	f0 68       	ori	r31, 0x80	; 128
+ 988:	3f 2e       	mov	r3, r31
+ 98a:	82 01       	movw	r16, r4
+ 98c:	33 fc       	sbrc	r3, 3
+ 98e:	19 c0       	rjmp	.+50     	; 0x9c2 <vfprintf+0x1b6>
+ 990:	82 2d       	mov	r24, r2
+ 992:	90 e0       	ldi	r25, 0x00	; 0
+ 994:	88 16       	cp	r8, r24
+ 996:	99 06       	cpc	r9, r25
+ 998:	a0 f4       	brcc	.+40     	; 0x9c2 <vfprintf+0x1b6>
+ 99a:	b6 01       	movw	r22, r12
+ 99c:	80 e2       	ldi	r24, 0x20	; 32
+ 99e:	90 e0       	ldi	r25, 0x00	; 0
+ 9a0:	1d d1       	rcall	.+570    	; 0xbdc <fputc>
+ 9a2:	2a 94       	dec	r2
+ 9a4:	f5 cf       	rjmp	.-22     	; 0x990 <vfprintf+0x184>
+ 9a6:	f5 01       	movw	r30, r10
+ 9a8:	37 fc       	sbrc	r3, 7
+ 9aa:	85 91       	lpm	r24, Z+
+ 9ac:	37 fe       	sbrs	r3, 7
+ 9ae:	81 91       	ld	r24, Z+
+ 9b0:	5f 01       	movw	r10, r30
+ 9b2:	b6 01       	movw	r22, r12
+ 9b4:	90 e0       	ldi	r25, 0x00	; 0
+ 9b6:	12 d1       	rcall	.+548    	; 0xbdc <fputc>
+ 9b8:	21 10       	cpse	r2, r1
+ 9ba:	2a 94       	dec	r2
+ 9bc:	21 e0       	ldi	r18, 0x01	; 1
+ 9be:	82 1a       	sub	r8, r18
+ 9c0:	91 08       	sbc	r9, r1
+ 9c2:	81 14       	cp	r8, r1
+ 9c4:	91 04       	cpc	r9, r1
+ 9c6:	79 f7       	brne	.-34     	; 0x9a6 <vfprintf+0x19a>
+ 9c8:	e1 c0       	rjmp	.+450    	; 0xb8c <vfprintf+0x380>
+ 9ca:	84 36       	cpi	r24, 0x64	; 100
+ 9cc:	11 f0       	breq	.+4      	; 0x9d2 <vfprintf+0x1c6>
+ 9ce:	89 36       	cpi	r24, 0x69	; 105
+ 9d0:	39 f5       	brne	.+78     	; 0xa20 <vfprintf+0x214>
+ 9d2:	f8 01       	movw	r30, r16
+ 9d4:	37 fe       	sbrs	r3, 7
+ 9d6:	07 c0       	rjmp	.+14     	; 0x9e6 <vfprintf+0x1da>
+ 9d8:	60 81       	ld	r22, Z
+ 9da:	71 81       	ldd	r23, Z+1	; 0x01
+ 9dc:	82 81       	ldd	r24, Z+2	; 0x02
+ 9de:	93 81       	ldd	r25, Z+3	; 0x03
+ 9e0:	0c 5f       	subi	r16, 0xFC	; 252
+ 9e2:	1f 4f       	sbci	r17, 0xFF	; 255
+ 9e4:	08 c0       	rjmp	.+16     	; 0x9f6 <vfprintf+0x1ea>
+ 9e6:	60 81       	ld	r22, Z
+ 9e8:	71 81       	ldd	r23, Z+1	; 0x01
+ 9ea:	07 2e       	mov	r0, r23
+ 9ec:	00 0c       	add	r0, r0
+ 9ee:	88 0b       	sbc	r24, r24
+ 9f0:	99 0b       	sbc	r25, r25
+ 9f2:	0e 5f       	subi	r16, 0xFE	; 254
+ 9f4:	1f 4f       	sbci	r17, 0xFF	; 255
+ 9f6:	f3 2d       	mov	r31, r3
+ 9f8:	ff 76       	andi	r31, 0x6F	; 111
+ 9fa:	3f 2e       	mov	r3, r31
+ 9fc:	97 ff       	sbrs	r25, 7
+ 9fe:	09 c0       	rjmp	.+18     	; 0xa12 <vfprintf+0x206>
+ a00:	90 95       	com	r25
+ a02:	80 95       	com	r24
+ a04:	70 95       	com	r23
+ a06:	61 95       	neg	r22
+ a08:	7f 4f       	sbci	r23, 0xFF	; 255
+ a0a:	8f 4f       	sbci	r24, 0xFF	; 255
+ a0c:	9f 4f       	sbci	r25, 0xFF	; 255
+ a0e:	f0 68       	ori	r31, 0x80	; 128
+ a10:	3f 2e       	mov	r3, r31
+ a12:	2a e0       	ldi	r18, 0x0A	; 10
+ a14:	30 e0       	ldi	r19, 0x00	; 0
+ a16:	a3 01       	movw	r20, r6
+ a18:	1d d1       	rcall	.+570    	; 0xc54 <__ultoa_invert>
+ a1a:	88 2e       	mov	r8, r24
+ a1c:	86 18       	sub	r8, r6
+ a1e:	44 c0       	rjmp	.+136    	; 0xaa8 <vfprintf+0x29c>
+ a20:	85 37       	cpi	r24, 0x75	; 117
+ a22:	31 f4       	brne	.+12     	; 0xa30 <vfprintf+0x224>
+ a24:	23 2d       	mov	r18, r3
+ a26:	2f 7e       	andi	r18, 0xEF	; 239
+ a28:	b2 2e       	mov	r11, r18
+ a2a:	2a e0       	ldi	r18, 0x0A	; 10
+ a2c:	30 e0       	ldi	r19, 0x00	; 0
+ a2e:	25 c0       	rjmp	.+74     	; 0xa7a <vfprintf+0x26e>
+ a30:	93 2d       	mov	r25, r3
+ a32:	99 7f       	andi	r25, 0xF9	; 249
+ a34:	b9 2e       	mov	r11, r25
+ a36:	8f 36       	cpi	r24, 0x6F	; 111
+ a38:	c1 f0       	breq	.+48     	; 0xa6a <vfprintf+0x25e>
+ a3a:	18 f4       	brcc	.+6      	; 0xa42 <vfprintf+0x236>
+ a3c:	88 35       	cpi	r24, 0x58	; 88
+ a3e:	79 f0       	breq	.+30     	; 0xa5e <vfprintf+0x252>
+ a40:	ae c0       	rjmp	.+348    	; 0xb9e <vfprintf+0x392>
+ a42:	80 37       	cpi	r24, 0x70	; 112
+ a44:	19 f0       	breq	.+6      	; 0xa4c <vfprintf+0x240>
+ a46:	88 37       	cpi	r24, 0x78	; 120
+ a48:	21 f0       	breq	.+8      	; 0xa52 <vfprintf+0x246>
+ a4a:	a9 c0       	rjmp	.+338    	; 0xb9e <vfprintf+0x392>
+ a4c:	e9 2f       	mov	r30, r25
+ a4e:	e0 61       	ori	r30, 0x10	; 16
+ a50:	be 2e       	mov	r11, r30
+ a52:	b4 fe       	sbrs	r11, 4
+ a54:	0d c0       	rjmp	.+26     	; 0xa70 <vfprintf+0x264>
+ a56:	fb 2d       	mov	r31, r11
+ a58:	f4 60       	ori	r31, 0x04	; 4
+ a5a:	bf 2e       	mov	r11, r31
+ a5c:	09 c0       	rjmp	.+18     	; 0xa70 <vfprintf+0x264>
+ a5e:	34 fe       	sbrs	r3, 4
+ a60:	0a c0       	rjmp	.+20     	; 0xa76 <vfprintf+0x26a>
+ a62:	29 2f       	mov	r18, r25
+ a64:	26 60       	ori	r18, 0x06	; 6
+ a66:	b2 2e       	mov	r11, r18
+ a68:	06 c0       	rjmp	.+12     	; 0xa76 <vfprintf+0x26a>
+ a6a:	28 e0       	ldi	r18, 0x08	; 8
+ a6c:	30 e0       	ldi	r19, 0x00	; 0
+ a6e:	05 c0       	rjmp	.+10     	; 0xa7a <vfprintf+0x26e>
+ a70:	20 e1       	ldi	r18, 0x10	; 16
+ a72:	30 e0       	ldi	r19, 0x00	; 0
+ a74:	02 c0       	rjmp	.+4      	; 0xa7a <vfprintf+0x26e>
+ a76:	20 e1       	ldi	r18, 0x10	; 16
+ a78:	32 e0       	ldi	r19, 0x02	; 2
+ a7a:	f8 01       	movw	r30, r16
+ a7c:	b7 fe       	sbrs	r11, 7
+ a7e:	07 c0       	rjmp	.+14     	; 0xa8e <vfprintf+0x282>
+ a80:	60 81       	ld	r22, Z
+ a82:	71 81       	ldd	r23, Z+1	; 0x01
+ a84:	82 81       	ldd	r24, Z+2	; 0x02
+ a86:	93 81       	ldd	r25, Z+3	; 0x03
+ a88:	0c 5f       	subi	r16, 0xFC	; 252
+ a8a:	1f 4f       	sbci	r17, 0xFF	; 255
+ a8c:	06 c0       	rjmp	.+12     	; 0xa9a <vfprintf+0x28e>
+ a8e:	60 81       	ld	r22, Z
+ a90:	71 81       	ldd	r23, Z+1	; 0x01
+ a92:	80 e0       	ldi	r24, 0x00	; 0
+ a94:	90 e0       	ldi	r25, 0x00	; 0
+ a96:	0e 5f       	subi	r16, 0xFE	; 254
+ a98:	1f 4f       	sbci	r17, 0xFF	; 255
+ a9a:	a3 01       	movw	r20, r6
+ a9c:	db d0       	rcall	.+438    	; 0xc54 <__ultoa_invert>
+ a9e:	88 2e       	mov	r8, r24
+ aa0:	86 18       	sub	r8, r6
+ aa2:	fb 2d       	mov	r31, r11
+ aa4:	ff 77       	andi	r31, 0x7F	; 127
+ aa6:	3f 2e       	mov	r3, r31
+ aa8:	36 fe       	sbrs	r3, 6
+ aaa:	0d c0       	rjmp	.+26     	; 0xac6 <vfprintf+0x2ba>
+ aac:	23 2d       	mov	r18, r3
+ aae:	2e 7f       	andi	r18, 0xFE	; 254
+ ab0:	a2 2e       	mov	r10, r18
+ ab2:	89 14       	cp	r8, r9
+ ab4:	58 f4       	brcc	.+22     	; 0xacc <vfprintf+0x2c0>
+ ab6:	34 fe       	sbrs	r3, 4
+ ab8:	0b c0       	rjmp	.+22     	; 0xad0 <vfprintf+0x2c4>
+ aba:	32 fc       	sbrc	r3, 2
+ abc:	09 c0       	rjmp	.+18     	; 0xad0 <vfprintf+0x2c4>
+ abe:	83 2d       	mov	r24, r3
+ ac0:	8e 7e       	andi	r24, 0xEE	; 238
+ ac2:	a8 2e       	mov	r10, r24
+ ac4:	05 c0       	rjmp	.+10     	; 0xad0 <vfprintf+0x2c4>
+ ac6:	b8 2c       	mov	r11, r8
+ ac8:	a3 2c       	mov	r10, r3
+ aca:	03 c0       	rjmp	.+6      	; 0xad2 <vfprintf+0x2c6>
+ acc:	b8 2c       	mov	r11, r8
+ ace:	01 c0       	rjmp	.+2      	; 0xad2 <vfprintf+0x2c6>
+ ad0:	b9 2c       	mov	r11, r9
+ ad2:	a4 fe       	sbrs	r10, 4
+ ad4:	0f c0       	rjmp	.+30     	; 0xaf4 <vfprintf+0x2e8>
+ ad6:	fe 01       	movw	r30, r28
+ ad8:	e8 0d       	add	r30, r8
+ ada:	f1 1d       	adc	r31, r1
+ adc:	80 81       	ld	r24, Z
+ ade:	80 33       	cpi	r24, 0x30	; 48
+ ae0:	21 f4       	brne	.+8      	; 0xaea <vfprintf+0x2de>
+ ae2:	9a 2d       	mov	r25, r10
+ ae4:	99 7e       	andi	r25, 0xE9	; 233
+ ae6:	a9 2e       	mov	r10, r25
+ ae8:	09 c0       	rjmp	.+18     	; 0xafc <vfprintf+0x2f0>
+ aea:	a2 fe       	sbrs	r10, 2
+ aec:	06 c0       	rjmp	.+12     	; 0xafa <vfprintf+0x2ee>
+ aee:	b3 94       	inc	r11
+ af0:	b3 94       	inc	r11
+ af2:	04 c0       	rjmp	.+8      	; 0xafc <vfprintf+0x2f0>
+ af4:	8a 2d       	mov	r24, r10
+ af6:	86 78       	andi	r24, 0x86	; 134
+ af8:	09 f0       	breq	.+2      	; 0xafc <vfprintf+0x2f0>
+ afa:	b3 94       	inc	r11
+ afc:	a3 fc       	sbrc	r10, 3
+ afe:	10 c0       	rjmp	.+32     	; 0xb20 <vfprintf+0x314>
+ b00:	a0 fe       	sbrs	r10, 0
+ b02:	06 c0       	rjmp	.+12     	; 0xb10 <vfprintf+0x304>
+ b04:	b2 14       	cp	r11, r2
+ b06:	80 f4       	brcc	.+32     	; 0xb28 <vfprintf+0x31c>
+ b08:	28 0c       	add	r2, r8
+ b0a:	92 2c       	mov	r9, r2
+ b0c:	9b 18       	sub	r9, r11
+ b0e:	0d c0       	rjmp	.+26     	; 0xb2a <vfprintf+0x31e>
+ b10:	b2 14       	cp	r11, r2
+ b12:	58 f4       	brcc	.+22     	; 0xb2a <vfprintf+0x31e>
+ b14:	b6 01       	movw	r22, r12
+ b16:	80 e2       	ldi	r24, 0x20	; 32
+ b18:	90 e0       	ldi	r25, 0x00	; 0
+ b1a:	60 d0       	rcall	.+192    	; 0xbdc <fputc>
+ b1c:	b3 94       	inc	r11
+ b1e:	f8 cf       	rjmp	.-16     	; 0xb10 <vfprintf+0x304>
+ b20:	b2 14       	cp	r11, r2
+ b22:	18 f4       	brcc	.+6      	; 0xb2a <vfprintf+0x31e>
+ b24:	2b 18       	sub	r2, r11
+ b26:	02 c0       	rjmp	.+4      	; 0xb2c <vfprintf+0x320>
+ b28:	98 2c       	mov	r9, r8
+ b2a:	21 2c       	mov	r2, r1
+ b2c:	a4 fe       	sbrs	r10, 4
+ b2e:	0f c0       	rjmp	.+30     	; 0xb4e <vfprintf+0x342>
+ b30:	b6 01       	movw	r22, r12
+ b32:	80 e3       	ldi	r24, 0x30	; 48
+ b34:	90 e0       	ldi	r25, 0x00	; 0
+ b36:	52 d0       	rcall	.+164    	; 0xbdc <fputc>
+ b38:	a2 fe       	sbrs	r10, 2
+ b3a:	16 c0       	rjmp	.+44     	; 0xb68 <vfprintf+0x35c>
+ b3c:	a1 fc       	sbrc	r10, 1
+ b3e:	03 c0       	rjmp	.+6      	; 0xb46 <vfprintf+0x33a>
+ b40:	88 e7       	ldi	r24, 0x78	; 120
+ b42:	90 e0       	ldi	r25, 0x00	; 0
+ b44:	02 c0       	rjmp	.+4      	; 0xb4a <vfprintf+0x33e>
+ b46:	88 e5       	ldi	r24, 0x58	; 88
+ b48:	90 e0       	ldi	r25, 0x00	; 0
+ b4a:	b6 01       	movw	r22, r12
+ b4c:	0c c0       	rjmp	.+24     	; 0xb66 <vfprintf+0x35a>
+ b4e:	8a 2d       	mov	r24, r10
+ b50:	86 78       	andi	r24, 0x86	; 134
+ b52:	51 f0       	breq	.+20     	; 0xb68 <vfprintf+0x35c>
+ b54:	a1 fe       	sbrs	r10, 1
+ b56:	02 c0       	rjmp	.+4      	; 0xb5c <vfprintf+0x350>
+ b58:	8b e2       	ldi	r24, 0x2B	; 43
+ b5a:	01 c0       	rjmp	.+2      	; 0xb5e <vfprintf+0x352>
+ b5c:	80 e2       	ldi	r24, 0x20	; 32
+ b5e:	a7 fc       	sbrc	r10, 7
+ b60:	8d e2       	ldi	r24, 0x2D	; 45
+ b62:	b6 01       	movw	r22, r12
+ b64:	90 e0       	ldi	r25, 0x00	; 0
+ b66:	3a d0       	rcall	.+116    	; 0xbdc <fputc>
+ b68:	89 14       	cp	r8, r9
+ b6a:	30 f4       	brcc	.+12     	; 0xb78 <vfprintf+0x36c>
+ b6c:	b6 01       	movw	r22, r12
+ b6e:	80 e3       	ldi	r24, 0x30	; 48
+ b70:	90 e0       	ldi	r25, 0x00	; 0
+ b72:	34 d0       	rcall	.+104    	; 0xbdc <fputc>
+ b74:	9a 94       	dec	r9
+ b76:	f8 cf       	rjmp	.-16     	; 0xb68 <vfprintf+0x35c>
+ b78:	8a 94       	dec	r8
+ b7a:	f3 01       	movw	r30, r6
+ b7c:	e8 0d       	add	r30, r8
+ b7e:	f1 1d       	adc	r31, r1
+ b80:	80 81       	ld	r24, Z
+ b82:	b6 01       	movw	r22, r12
+ b84:	90 e0       	ldi	r25, 0x00	; 0
+ b86:	2a d0       	rcall	.+84     	; 0xbdc <fputc>
+ b88:	81 10       	cpse	r8, r1
+ b8a:	f6 cf       	rjmp	.-20     	; 0xb78 <vfprintf+0x36c>
+ b8c:	22 20       	and	r2, r2
+ b8e:	09 f4       	brne	.+2      	; 0xb92 <vfprintf+0x386>
+ b90:	4e ce       	rjmp	.-868    	; 0x82e <vfprintf+0x22>
+ b92:	b6 01       	movw	r22, r12
+ b94:	80 e2       	ldi	r24, 0x20	; 32
+ b96:	90 e0       	ldi	r25, 0x00	; 0
+ b98:	21 d0       	rcall	.+66     	; 0xbdc <fputc>
+ b9a:	2a 94       	dec	r2
+ b9c:	f7 cf       	rjmp	.-18     	; 0xb8c <vfprintf+0x380>
+ b9e:	f6 01       	movw	r30, r12
+ ba0:	86 81       	ldd	r24, Z+6	; 0x06
+ ba2:	97 81       	ldd	r25, Z+7	; 0x07
+ ba4:	02 c0       	rjmp	.+4      	; 0xbaa <vfprintf+0x39e>
+ ba6:	8f ef       	ldi	r24, 0xFF	; 255
+ ba8:	9f ef       	ldi	r25, 0xFF	; 255
+ baa:	2b 96       	adiw	r28, 0x0b	; 11
+ bac:	e2 e1       	ldi	r30, 0x12	; 18
+ bae:	cc c0       	rjmp	.+408    	; 0xd48 <__epilogue_restores__>
+
+00000bb0 <strnlen_P>:
+ bb0:	fc 01       	movw	r30, r24
+ bb2:	05 90       	lpm	r0, Z+
+ bb4:	61 50       	subi	r22, 0x01	; 1
+ bb6:	70 40       	sbci	r23, 0x00	; 0
+ bb8:	01 10       	cpse	r0, r1
+ bba:	d8 f7       	brcc	.-10     	; 0xbb2 <strnlen_P+0x2>
+ bbc:	80 95       	com	r24
+ bbe:	90 95       	com	r25
+ bc0:	8e 0f       	add	r24, r30
+ bc2:	9f 1f       	adc	r25, r31
+ bc4:	08 95       	ret
+
+00000bc6 <strnlen>:
+ bc6:	fc 01       	movw	r30, r24
+ bc8:	61 50       	subi	r22, 0x01	; 1
+ bca:	70 40       	sbci	r23, 0x00	; 0
+ bcc:	01 90       	ld	r0, Z+
+ bce:	01 10       	cpse	r0, r1
+ bd0:	d8 f7       	brcc	.-10     	; 0xbc8 <strnlen+0x2>
+ bd2:	80 95       	com	r24
+ bd4:	90 95       	com	r25
+ bd6:	8e 0f       	add	r24, r30
+ bd8:	9f 1f       	adc	r25, r31
+ bda:	08 95       	ret
+
+00000bdc <fputc>:
+ bdc:	0f 93       	push	r16
+ bde:	1f 93       	push	r17
+ be0:	cf 93       	push	r28
+ be2:	df 93       	push	r29
+ be4:	fb 01       	movw	r30, r22
+ be6:	23 81       	ldd	r18, Z+3	; 0x03
+ be8:	21 fd       	sbrc	r18, 1
+ bea:	03 c0       	rjmp	.+6      	; 0xbf2 <fputc+0x16>
+ bec:	8f ef       	ldi	r24, 0xFF	; 255
+ bee:	9f ef       	ldi	r25, 0xFF	; 255
+ bf0:	2c c0       	rjmp	.+88     	; 0xc4a <fputc+0x6e>
+ bf2:	22 ff       	sbrs	r18, 2
+ bf4:	16 c0       	rjmp	.+44     	; 0xc22 <fputc+0x46>
+ bf6:	46 81       	ldd	r20, Z+6	; 0x06
+ bf8:	57 81       	ldd	r21, Z+7	; 0x07
+ bfa:	24 81       	ldd	r18, Z+4	; 0x04
+ bfc:	35 81       	ldd	r19, Z+5	; 0x05
+ bfe:	42 17       	cp	r20, r18
+ c00:	53 07       	cpc	r21, r19
+ c02:	44 f4       	brge	.+16     	; 0xc14 <fputc+0x38>
+ c04:	a0 81       	ld	r26, Z
+ c06:	b1 81       	ldd	r27, Z+1	; 0x01
+ c08:	9d 01       	movw	r18, r26
+ c0a:	2f 5f       	subi	r18, 0xFF	; 255
+ c0c:	3f 4f       	sbci	r19, 0xFF	; 255
+ c0e:	31 83       	std	Z+1, r19	; 0x01
+ c10:	20 83       	st	Z, r18
+ c12:	8c 93       	st	X, r24
+ c14:	26 81       	ldd	r18, Z+6	; 0x06
+ c16:	37 81       	ldd	r19, Z+7	; 0x07
+ c18:	2f 5f       	subi	r18, 0xFF	; 255
+ c1a:	3f 4f       	sbci	r19, 0xFF	; 255
+ c1c:	37 83       	std	Z+7, r19	; 0x07
+ c1e:	26 83       	std	Z+6, r18	; 0x06
+ c20:	14 c0       	rjmp	.+40     	; 0xc4a <fputc+0x6e>
+ c22:	8b 01       	movw	r16, r22
+ c24:	ec 01       	movw	r28, r24
+ c26:	fb 01       	movw	r30, r22
+ c28:	00 84       	ldd	r0, Z+8	; 0x08
+ c2a:	f1 85       	ldd	r31, Z+9	; 0x09
+ c2c:	e0 2d       	mov	r30, r0
+ c2e:	09 95       	icall
+ c30:	89 2b       	or	r24, r25
+ c32:	e1 f6       	brne	.-72     	; 0xbec <fputc+0x10>
+ c34:	d8 01       	movw	r26, r16
+ c36:	16 96       	adiw	r26, 0x06	; 6
+ c38:	8d 91       	ld	r24, X+
+ c3a:	9c 91       	ld	r25, X
+ c3c:	17 97       	sbiw	r26, 0x07	; 7
+ c3e:	01 96       	adiw	r24, 0x01	; 1
+ c40:	17 96       	adiw	r26, 0x07	; 7
+ c42:	9c 93       	st	X, r25
+ c44:	8e 93       	st	-X, r24
+ c46:	16 97       	sbiw	r26, 0x06	; 6
+ c48:	ce 01       	movw	r24, r28
+ c4a:	df 91       	pop	r29
+ c4c:	cf 91       	pop	r28
+ c4e:	1f 91       	pop	r17
+ c50:	0f 91       	pop	r16
+ c52:	08 95       	ret
+
+00000c54 <__ultoa_invert>:
+ c54:	fa 01       	movw	r30, r20
+ c56:	aa 27       	eor	r26, r26
+ c58:	28 30       	cpi	r18, 0x08	; 8
+ c5a:	51 f1       	breq	.+84     	; 0xcb0 <__ultoa_invert+0x5c>
+ c5c:	20 31       	cpi	r18, 0x10	; 16
+ c5e:	81 f1       	breq	.+96     	; 0xcc0 <__ultoa_invert+0x6c>
+ c60:	e8 94       	clt
+ c62:	6f 93       	push	r22
+ c64:	6e 7f       	andi	r22, 0xFE	; 254
+ c66:	6e 5f       	subi	r22, 0xFE	; 254
+ c68:	7f 4f       	sbci	r23, 0xFF	; 255
+ c6a:	8f 4f       	sbci	r24, 0xFF	; 255
+ c6c:	9f 4f       	sbci	r25, 0xFF	; 255
+ c6e:	af 4f       	sbci	r26, 0xFF	; 255
+ c70:	b1 e0       	ldi	r27, 0x01	; 1
+ c72:	3e d0       	rcall	.+124    	; 0xcf0 <__ultoa_invert+0x9c>
+ c74:	b4 e0       	ldi	r27, 0x04	; 4
+ c76:	3c d0       	rcall	.+120    	; 0xcf0 <__ultoa_invert+0x9c>
+ c78:	67 0f       	add	r22, r23
+ c7a:	78 1f       	adc	r23, r24
+ c7c:	89 1f       	adc	r24, r25
+ c7e:	9a 1f       	adc	r25, r26
+ c80:	a1 1d       	adc	r26, r1
+ c82:	68 0f       	add	r22, r24
+ c84:	79 1f       	adc	r23, r25
+ c86:	8a 1f       	adc	r24, r26
+ c88:	91 1d       	adc	r25, r1
+ c8a:	a1 1d       	adc	r26, r1
+ c8c:	6a 0f       	add	r22, r26
+ c8e:	71 1d       	adc	r23, r1
+ c90:	81 1d       	adc	r24, r1
+ c92:	91 1d       	adc	r25, r1
+ c94:	a1 1d       	adc	r26, r1
+ c96:	20 d0       	rcall	.+64     	; 0xcd8 <__ultoa_invert+0x84>
+ c98:	09 f4       	brne	.+2      	; 0xc9c <__ultoa_invert+0x48>
+ c9a:	68 94       	set
+ c9c:	3f 91       	pop	r19
+ c9e:	2a e0       	ldi	r18, 0x0A	; 10
+ ca0:	26 9f       	mul	r18, r22
+ ca2:	11 24       	eor	r1, r1
+ ca4:	30 19       	sub	r19, r0
+ ca6:	30 5d       	subi	r19, 0xD0	; 208
+ ca8:	31 93       	st	Z+, r19
+ caa:	de f6       	brtc	.-74     	; 0xc62 <__ultoa_invert+0xe>
+ cac:	cf 01       	movw	r24, r30
+ cae:	08 95       	ret
+ cb0:	46 2f       	mov	r20, r22
+ cb2:	47 70       	andi	r20, 0x07	; 7
+ cb4:	40 5d       	subi	r20, 0xD0	; 208
+ cb6:	41 93       	st	Z+, r20
+ cb8:	b3 e0       	ldi	r27, 0x03	; 3
+ cba:	0f d0       	rcall	.+30     	; 0xcda <__ultoa_invert+0x86>
+ cbc:	c9 f7       	brne	.-14     	; 0xcb0 <__ultoa_invert+0x5c>
+ cbe:	f6 cf       	rjmp	.-20     	; 0xcac <__ultoa_invert+0x58>
+ cc0:	46 2f       	mov	r20, r22
+ cc2:	4f 70       	andi	r20, 0x0F	; 15
+ cc4:	40 5d       	subi	r20, 0xD0	; 208
+ cc6:	4a 33       	cpi	r20, 0x3A	; 58
+ cc8:	18 f0       	brcs	.+6      	; 0xcd0 <__ultoa_invert+0x7c>
+ cca:	49 5d       	subi	r20, 0xD9	; 217
+ ccc:	31 fd       	sbrc	r19, 1
+ cce:	40 52       	subi	r20, 0x20	; 32
+ cd0:	41 93       	st	Z+, r20
+ cd2:	02 d0       	rcall	.+4      	; 0xcd8 <__ultoa_invert+0x84>
+ cd4:	a9 f7       	brne	.-22     	; 0xcc0 <__ultoa_invert+0x6c>
+ cd6:	ea cf       	rjmp	.-44     	; 0xcac <__ultoa_invert+0x58>
+ cd8:	b4 e0       	ldi	r27, 0x04	; 4
+ cda:	a6 95       	lsr	r26
+ cdc:	97 95       	ror	r25
+ cde:	87 95       	ror	r24
+ ce0:	77 95       	ror	r23
+ ce2:	67 95       	ror	r22
+ ce4:	ba 95       	dec	r27
+ ce6:	c9 f7       	brne	.-14     	; 0xcda <__ultoa_invert+0x86>
+ ce8:	00 97       	sbiw	r24, 0x00	; 0
+ cea:	61 05       	cpc	r22, r1
+ cec:	71 05       	cpc	r23, r1
+ cee:	08 95       	ret
+ cf0:	9b 01       	movw	r18, r22
+ cf2:	ac 01       	movw	r20, r24
+ cf4:	0a 2e       	mov	r0, r26
+ cf6:	06 94       	lsr	r0
+ cf8:	57 95       	ror	r21
+ cfa:	47 95       	ror	r20
+ cfc:	37 95       	ror	r19
+ cfe:	27 95       	ror	r18
+ d00:	ba 95       	dec	r27
+ d02:	c9 f7       	brne	.-14     	; 0xcf6 <__ultoa_invert+0xa2>
+ d04:	62 0f       	add	r22, r18
+ d06:	73 1f       	adc	r23, r19
+ d08:	84 1f       	adc	r24, r20
+ d0a:	95 1f       	adc	r25, r21
+ d0c:	a0 1d       	adc	r26, r0
+ d0e:	08 95       	ret
+
+00000d10 <__prologue_saves__>:
+ d10:	2f 92       	push	r2
+ d12:	3f 92       	push	r3
+ d14:	4f 92       	push	r4
+ d16:	5f 92       	push	r5
+ d18:	6f 92       	push	r6
+ d1a:	7f 92       	push	r7
+ d1c:	8f 92       	push	r8
+ d1e:	9f 92       	push	r9
+ d20:	af 92       	push	r10
+ d22:	bf 92       	push	r11
+ d24:	cf 92       	push	r12
+ d26:	df 92       	push	r13
+ d28:	ef 92       	push	r14
+ d2a:	ff 92       	push	r15
+ d2c:	0f 93       	push	r16
+ d2e:	1f 93       	push	r17
+ d30:	cf 93       	push	r28
+ d32:	df 93       	push	r29
+ d34:	cd b7       	in	r28, 0x3d	; 61
+ d36:	de b7       	in	r29, 0x3e	; 62
+ d38:	ca 1b       	sub	r28, r26
+ d3a:	db 0b       	sbc	r29, r27
+ d3c:	0f b6       	in	r0, 0x3f	; 63
+ d3e:	f8 94       	cli
+ d40:	de bf       	out	0x3e, r29	; 62
+ d42:	0f be       	out	0x3f, r0	; 63
+ d44:	cd bf       	out	0x3d, r28	; 61
+ d46:	09 94       	ijmp
+
+00000d48 <__epilogue_restores__>:
+ d48:	2a 88       	ldd	r2, Y+18	; 0x12
+ d4a:	39 88       	ldd	r3, Y+17	; 0x11
+ d4c:	48 88       	ldd	r4, Y+16	; 0x10
+ d4e:	5f 84       	ldd	r5, Y+15	; 0x0f
+ d50:	6e 84       	ldd	r6, Y+14	; 0x0e
+ d52:	7d 84       	ldd	r7, Y+13	; 0x0d
+ d54:	8c 84       	ldd	r8, Y+12	; 0x0c
+ d56:	9b 84       	ldd	r9, Y+11	; 0x0b
+ d58:	aa 84       	ldd	r10, Y+10	; 0x0a
+ d5a:	b9 84       	ldd	r11, Y+9	; 0x09
+ d5c:	c8 84       	ldd	r12, Y+8	; 0x08
+ d5e:	df 80       	ldd	r13, Y+7	; 0x07
+ d60:	ee 80       	ldd	r14, Y+6	; 0x06
+ d62:	fd 80       	ldd	r15, Y+5	; 0x05
+ d64:	0c 81       	ldd	r16, Y+4	; 0x04
+ d66:	1b 81       	ldd	r17, Y+3	; 0x03
+ d68:	aa 81       	ldd	r26, Y+2	; 0x02
+ d6a:	b9 81       	ldd	r27, Y+1	; 0x01
+ d6c:	ce 0f       	add	r28, r30
+ d6e:	d1 1d       	adc	r29, r1
+ d70:	0f b6       	in	r0, 0x3f	; 63
+ d72:	f8 94       	cli
+ d74:	de bf       	out	0x3e, r29	; 62
+ d76:	0f be       	out	0x3f, r0	; 63
+ d78:	cd bf       	out	0x3d, r28	; 61
+ d7a:	ed 01       	movw	r28, r26
+ d7c:	08 95       	ret
+
+00000d7e <_exit>:
+ d7e:	f8 94       	cli
+
+00000d80 <__stop_program>:
+ d80:	ff cf       	rjmp	.-2      	; 0xd80 <__stop_program>
