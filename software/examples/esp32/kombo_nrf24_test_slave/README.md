@@ -2,4 +2,4 @@
 
 ### Вариант подключения:
 
-<img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/software/examples/Arduino/arduino_test_master/esp32%2Bnrf24l01_example_bb.png" />
+<img align="center" width=500 src="https://github.com/MelexinVN/bs_kombo/blob/main/software/examples/esp32/kombo_nrf24_test_slave/esp32%2Bnrf24l01_example_bb.png" />
