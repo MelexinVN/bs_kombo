@@ -12,12 +12,12 @@
 * Автор: Мелехин В.Н. (MelexinVN)
 */
 
-#ifndef NRF24_H_
-#define NRF24_H_
+#ifndef KOMBO_NRF24_H_
+#define KOMBO_NRF24_H_
 
 #include "main.h"		//добавляем основной заголовочный файл проекта
 
-#define SLAVE			//выбор устройства: MASTER - ведущий, SLAVE - ведомый
+#define MASTER			//выбор устройства: MASTER - ведущий, SLAVE - ведомый
 
 //Макросы выводов микроконтроллера
 #ifdef ATMEGA8
@@ -123,4 +123,4 @@ void nrf24_send(uint8_t *p_buf);
 //Процедура обработки прерывания
 void irq_callback(void);
 //------------------------------------------------
-#endif /* NRF24_H_ */
+#endif /* KOMBO_NRF24_H_ */
