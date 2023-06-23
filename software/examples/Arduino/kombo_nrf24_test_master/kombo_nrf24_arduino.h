@@ -1,11 +1,9 @@
 /*
-* kombo_nrf24.h
+* kombo_nrf24_arduino.h
 * Заголовочный файл библиотеки работы с радиомодулем NRF24L01. 
 * Проект "КомБО"(Открытые системы беспроводной коммуникации)
 *
-* Микроконтроллеры: ATmega8/48/88/168/328
-*
-* Добавлена поддержка платформы Arduino
+* Специально для платформы Arduino
 *
 * Здесь необходимо сконфигурировать устройство как ведущее/ведомое,
 * номера пинов и порты МК, к которым будет подключен модуль
@@ -13,49 +11,9 @@
 * Автор: Мелехин В.Н. (MelexinVN)
 */
 
-#ifndef NRF24_H_
-#define NRF24_H_
-
 #include "main.h"  //добавляем основной заголовочный файл проекта
 
 #define MASTER  //выбор устройства: MASTER - ведущий, SLAVE - ведомый
-
-//Макросы выводов микроконтроллера
-#ifdef ATMEGA8
-#define IRQ_PIN PORTD2  //пин прерывания радиомодуля
-#define CE_PIN PORTB0   //пин CE
-#define CSN_PIN PORTD7  //пин CSN
-#endif
-
-#ifdef ATMEGA88
-#define IRQ_PIN PD2  //пин прерывания радиомодуля
-#define CE_PIN PB0   //пин CE
-#define CSN_PIN PD7  //пин CSN
-#endif
-
-#ifndef ARDUINO
-
-#define IRQ_PORT PORTD  //порт прерывания радиомодуля
-#define IRQ_DD DDD2     //бит направления данных прерывания радиомодуля
-#define IRQ_DDR DDRD    //порт направления данных прерывания радиомодуля
-
-#define CE_PORT PORTB  //порт CE
-#define CE_DD DDB0     //бит направления данных CE
-#define CE_DDR DDRB    //порт направления данных CE
-
-#define CSN_PORT PORTD  //порт CSN
-#define CSN_DD DDD7     //бит направления данных CSN
-#define CSN_DDR DDRD    //порт направления данных CSN
-
-//Макросы манипуляции пинами
-#define CSN_ON() CSN_PORT &= ~(1 << CSN_PIN)  //прижимание пина CSN к земле
-#define CSN_OFF() CSN_PORT |= (1 << CSN_PIN)  //поднятие пина CSN
-#define CE_RESET() CE_PORT &= ~(1 << CE_PIN)  //опускание ноги CE
-#define CE_SET() CE_PORT |= (1 << CE_PIN)     //поднятие ноги CE
-
-#endif
-
-#ifdef ARDUINO
 
 #define IRQ_PIN 2   //пин прерывания радиомодуля
 #define CE_PIN 9    //пин CE
@@ -66,8 +24,6 @@
 #define CSN_OFF() digitalWrite(CSN_PIN, HIGH)  //поднятие пина CSN
 #define CE_RESET() digitalWrite(CE_PIN, LOW)   //опускание ноги CE
 #define CE_SET() digitalWrite(CE_PIN, HIGH)    //поднятие ноги CE
-
-#endif
 
 //Макросы команд радиомодуля
 #define ACTIVATE 0x50     //активация доп. функций
@@ -103,17 +59,3 @@
 //Макросы параметров модуля
 #define TX_ADR_WIDTH 3     //размер адреса передачи
 #define TX_PLOAD_WIDTH 32  //размер полезной нагрузки
-
-//Процедуры и функции:
-//Процедура инициализации модуля
-void nrf24_init(void);
-//Функция чтения регистра модуля
-uint8_t nrf24_read_reg(uint8_t addr);
-//Процедура чтения буфера
-void nrf24_read_buf(uint8_t addr, uint8_t *p_buf, uint8_t bytes);
-//Процедура отправки данных в эфир
-void nrf24_send(uint8_t *p_buf);
-//Процедура обработки прерывания
-void irq_callback(void);
-//------------------------------------------------
-#endif /* NRF24_H_ */

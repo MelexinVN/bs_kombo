@@ -1,9 +1,9 @@
 /*
-* kombo_nrf24_arduino.h
+* kombo_nrf24.h
 * Заголовочный файл библиотеки работы с радиомодулем NRF24L01. 
 * Проект "КомБО"(Открытые системы беспроводной коммуникации)
 *
-* Специально для платформы Arduino
+* Специально для ESP32 WROOM (проверено для платы ESP32 Dev Module)
 *
 * Здесь необходимо сконфигурировать устройство как ведущее/ведомое,
 * номера пинов и порты МК, к которым будет подключен модуль
@@ -13,17 +13,23 @@
 
 #include "main.h"  //добавляем основной заголовочный файл проекта
 
-#define SLAVE  //выбор устройства: MASTER - ведущий, SLAVE - ведомый
+#define MASTER  //выбор устройства: MASTER - ведущий, SLAVE - ведомый
 
-#define IRQ_PIN 2   //пин прерывания радиомодуля
-#define CE_PIN 9    //пин CE
-#define CSN_PIN 10  //пин CSN
+//пины VSPI
+#define VSPI_MISO MISO
+#define VSPI_MOSI MOSI
+#define VSPI_SCLK SCK
+#define VSPI_SS SS
+
+//прочие пины
+#define CE 15       //пин CE
+#define IRQ_PIN 21  //пин прерывания радиомодуля
 
 //Макросы манипуляции пинами
-#define CSN_ON() digitalWrite(CSN_PIN, LOW)    //прижимание пина CSN к земле
-#define CSN_OFF() digitalWrite(CSN_PIN, HIGH)  //поднятие пина CSN
-#define CE_RESET() digitalWrite(CE_PIN, LOW)   //опускание ноги CE
-#define CE_SET() digitalWrite(CE_PIN, HIGH)    //поднятие ноги CE
+#define CSN_ON() digitalWrite(VSPI_SS, LOW)    //прижимание пина CSN к земле
+#define CSN_OFF() digitalWrite(VSPI_SS, HIGH)  //поднятие пина CSN
+#define CE_RESET() digitalWrite(CE, LOW)       //опускание ноги CE
+#define CE_SET() digitalWrite(CE, HIGH)        //поднятие ноги CE
 
 //Макросы команд радиомодуля
 #define ACTIVATE 0x50     //активация доп. функций
