@@ -23,6 +23,11 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_epilogue.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(sprintf.o) (__epilogue_restores__)
 
+Allocating common symbols
+Common symbol       size              file
+
+sreg_temp           0x1               kombo_nrf24.o
+
 Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8a/avr4/crtatmega8a.o
@@ -262,7 +267,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xd6c
+.text           0x00000000      0xda6
  *(.vectors)
  .vectors       0x00000000       0x26 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8a/avr4/crtatmega8a.o
                 0x00000000                __vector_default
@@ -340,121 +345,130 @@ END GROUP
                 0x0000005c                __vector_18
                 0x0000005e                . = ALIGN (0x2)
  *(.text.*)
+ .text.interrupt_off
+                0x0000005e        0xa kombo_nrf24.o
+                0x0000005e                interrupt_off
+ .text.interrupt_on
+                0x00000068        0x8 kombo_nrf24.o
+                0x00000068                interrupt_on
+ .text.uni_delay_us
+                0x00000070       0x2c kombo_nrf24.o
+                0x00000070                uni_delay_us
  .text.nrf24_read_reg
-                0x0000005e       0x20 kombo_nrf24.o
-                0x0000005e                nrf24_read_reg
+                0x0000009c       0x20 kombo_nrf24.o
+                0x0000009c                nrf24_read_reg
  .text.nrf24_write_reg
-                0x0000007e       0x1c kombo_nrf24.o
-                0x0000007e                nrf24_write_reg
+                0x000000bc       0x1c kombo_nrf24.o
+                0x000000bc                nrf24_write_reg
  .text.nrf24_toggle_features
-                0x0000009a       0x1e kombo_nrf24.o
-                0x0000009a                nrf24_toggle_features
+                0x000000d8       0x20 kombo_nrf24.o
+                0x000000d8                nrf24_toggle_features
  .text.nrf24_read_buf
-                0x000000b8       0x4c kombo_nrf24.o
-                0x000000b8                nrf24_read_buf
+                0x000000f8       0x4c kombo_nrf24.o
+                0x000000f8                nrf24_read_buf
  .text.nrf24_write_buf
-                0x00000104       0x42 kombo_nrf24.o
-                0x00000104                nrf24_write_buf
+                0x00000144       0x44 kombo_nrf24.o
+                0x00000144                nrf24_write_buf
  .text.nrf24_flush_rx
-                0x00000146       0x1a kombo_nrf24.o
-                0x00000146                nrf24_flush_rx
+                0x00000188       0x1c kombo_nrf24.o
+                0x00000188                nrf24_flush_rx
  .text.nrf24_flush_tx
-                0x00000160       0x1a kombo_nrf24.o
-                0x00000160                nrf24_flush_tx
+                0x000001a4       0x1c kombo_nrf24.o
+                0x000001a4                nrf24_flush_tx
  .text.nrf24_rx_mode
-                0x0000017a       0x38 kombo_nrf24.o
-                0x0000017a                nrf24_rx_mode
+                0x000001c0       0x36 kombo_nrf24.o
+                0x000001c0                nrf24_rx_mode
  .text.nrf24_tx_mode
-                0x000001b2       0x20 kombo_nrf24.o
-                0x000001b2                nrf24_tx_mode
+                0x000001f6       0x20 kombo_nrf24.o
+                0x000001f6                nrf24_tx_mode
  .text.nrf24_transmit
-                0x000001d2       0x4c kombo_nrf24.o
-                0x000001d2                nrf24_transmit
+                0x00000216       0x4e kombo_nrf24.o
+                0x00000216                nrf24_transmit
  .text.nrf24_send
-                0x0000021e       0x4c kombo_nrf24.o
-                0x0000021e                nrf24_send
+                0x00000264       0x48 kombo_nrf24.o
+                0x00000264                nrf24_send
  .text.nrf24_pins_init
-                0x0000026a       0x22 kombo_nrf24.o
-                0x0000026a                nrf24_pins_init
+                0x000002ac       0x22 kombo_nrf24.o
+                0x000002ac                nrf24_pins_init
  .text.nrf24_init
-                0x0000028c       0x7c kombo_nrf24.o
-                0x0000028c                nrf24_init
+                0x000002ce       0x78 kombo_nrf24.o
+                0x000002ce                nrf24_init
  .text.irq_callback
-                0x00000308       0x5a kombo_nrf24.o
-                0x00000308                irq_callback
+                0x00000346       0x56 kombo_nrf24.o
+                0x00000346                irq_callback
  .text.gpio_init
-                0x00000362        0xc main.o
-                0x00000362                gpio_init
+                0x0000039c        0xc main.o
+                0x0000039c                gpio_init
  .text.interrupt_init
-                0x0000036e       0x10 main.o
-                0x0000036e                interrupt_init
+                0x000003a8       0x10 main.o
+                0x000003a8                interrupt_init
  .text.nrf24l01_receive
-                0x0000037e      0x156 main.o
-                0x0000037e                nrf24l01_receive
+                0x000003b8      0x156 main.o
+                0x000003b8                nrf24l01_receive
  .text.blink_led
-                0x000004d4       0x3a main.o
-                0x000004d4                blink_led
+                0x0000050e       0x3a main.o
+                0x0000050e                blink_led
  .text.__vector_11
-                0x0000050e       0x14 main.o
-                0x0000050e                __vector_11
+                0x00000548       0x14 main.o
+                0x00000548                __vector_11
  .text.__vector_1
-                0x00000522       0x46 main.o
-                0x00000522                __vector_1
+                0x0000055c       0x46 main.o
+                0x0000055c                __vector_1
  .text.nrf_info_print
-                0x00000568      0x120 main.o
-                0x00000568                nrf_info_print
- .text.main     0x00000688       0x66 main.o
-                0x00000688                main
+                0x000005a2      0x120 main.o
+                0x000005a2                nrf_info_print
+ .text.main     0x000006c2       0x66 main.o
+                0x000006c2                main
  .text.spi_init
-                0x000006ee       0x12 spi.o
-                0x000006ee                spi_init
+                0x00000728       0x12 spi.o
+                0x00000728                spi_init
  .text.spi_send_byte
-                0x00000700        0x8 spi.o
-                0x00000700                spi_send_byte
+                0x0000073a        0x8 spi.o
+                0x0000073a                spi_send_byte
  .text.spi_change_byte
-                0x00000708        0xa spi.o
-                0x00000708                spi_change_byte
+                0x00000742        0xa spi.o
+                0x00000742                spi_change_byte
  .text.usart_init
-                0x00000712       0x22 usart.o
-                0x00000712                usart_init
+                0x0000074c       0x22 usart.o
+                0x0000074c                usart_init
  .text.usart_transmit
-                0x00000734        0x8 usart.o
-                0x00000734                usart_transmit
+                0x0000076e        0x8 usart.o
+                0x0000076e                usart_transmit
  .text.usart_print
-                0x0000073c       0x3a usart.o
-                0x0000073c                usart_print
+                0x00000776       0x3a usart.o
+                0x00000776                usart_print
  .text.usart_println
-                0x00000776       0x42 usart.o
-                0x00000776                usart_println
+                0x000007b0       0x42 usart.o
+                0x000007b0                usart_println
  .text.avr-libc
-                0x000007b8       0x3e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(sprintf.o)
-                0x000007b8                sprintf
+                0x000007f2       0x3e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(sprintf.o)
+                0x000007f2                sprintf
  .text.avr-libc
-                0x000007f6      0x3a4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(vfprintf_std.o)
-                0x000007f6                vfprintf
+                0x00000830      0x3a4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(vfprintf_std.o)
+                0x00000830                vfprintf
  .text.avr-libc
-                0x00000b9a       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(strnlen_P.o)
-                0x00000b9a                strnlen_P
+                0x00000bd4       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(strnlen_P.o)
+                0x00000bd4                strnlen_P
  .text.avr-libc
-                0x00000bb0       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(strnlen.o)
-                0x00000bb0                strnlen
+                0x00000bea       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(strnlen.o)
+                0x00000bea                strnlen
  .text.avr-libc
-                0x00000bc6       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(fputc.o)
-                0x00000bc6                fputc
+                0x00000c00       0x78 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(fputc.o)
+                0x00000c00                fputc
  .text.avr-libc
-                0x00000c3e       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(ultoa_invert.o)
-                0x00000c3e                __ultoa_invert
+                0x00000c78       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(ultoa_invert.o)
+                0x00000c78                __ultoa_invert
  .text.libgcc.prologue
-                0x00000cfa       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_prologue.o)
-                0x00000cfa                __prologue_saves__
+                0x00000d34       0x38 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_prologue.o)
+                0x00000d34                __prologue_saves__
  .text.libgcc.prologue
-                0x00000d32       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_epilogue.o)
-                0x00000d32                __epilogue_restores__
-                0x00000d68                . = ALIGN (0x2)
+                0x00000d6c       0x36 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_epilogue.o)
+                0x00000d6c                __epilogue_restores__
+                0x00000da2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000d68        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x00000d68                _exit
-                0x00000d68                exit
+ .fini9         0x00000da2        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x00000da2                _exit
+                0x00000da2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -473,11 +487,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000d68        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x00000da2        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000d6c                _etext = .
+                0x00000da6                _etext = .
 
-.data           0x00800060      0x11a load address 0x00000d6c
+.data           0x00800060      0x11a load address 0x00000da6
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -500,7 +514,7 @@ END GROUP
                 0x0080017a                _edata = .
                 0x0080017a                PROVIDE (__data_end, .)
 
-.bss            0x0080017a       0x83
+.bss            0x0080017a       0x84
                 0x0080017a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -518,15 +532,17 @@ END GROUP
  .bss.str       0x008001bd       0x40 main.o
                 0x008001bd                str
  *(COMMON)
-                0x008001fd                PROVIDE (__bss_end, .)
-                0x00000d6c                __data_load_start = LOADADDR (.data)
-                0x00000e86                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008001fd        0x1 kombo_nrf24.o
+                0x008001fd                sreg_temp
+                0x008001fe                PROVIDE (__bss_end, .)
+                0x00000da6                __data_load_start = LOADADDR (.data)
+                0x00000ec0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008001fd        0x0
+.noinit         0x008001fe        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008001fd                _end = .
+                0x008001fe                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -598,69 +614,69 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x148
+.debug_aranges  0x00000000      0x160
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x88 kombo_nrf24.o
+                0x00000000       0xa0 kombo_nrf24.o
  .debug_aranges
-                0x00000088       0x58 main.o
+                0x000000a0       0x58 main.o
  .debug_aranges
-                0x000000e0       0x30 spi.o
+                0x000000f8       0x30 spi.o
  .debug_aranges
-                0x00000110       0x38 usart.o
+                0x00000128       0x38 usart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x182a
+.debug_info     0x00000000     0x17a6
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x48c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_info    0x0000048c      0xb3b kombo_nrf24.o
- .debug_info    0x00000fc7      0x605 main.o
- .debug_info    0x000015cc       0xdc spi.o
- .debug_info    0x000016a8      0x182 usart.o
+ .debug_info    0x0000048c      0xab7 kombo_nrf24.o
+ .debug_info    0x00000f43      0x605 main.o
+ .debug_info    0x00001548       0xdc spi.o
+ .debug_info    0x00001624      0x182 usart.o
 
-.debug_abbrev   0x00000000      0xa6a
+.debug_abbrev   0x00000000      0xa6f
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x44e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_abbrev  0x0000044e      0x227 kombo_nrf24.o
- .debug_abbrev  0x00000675      0x245 main.o
- .debug_abbrev  0x000008ba       0xa3 spi.o
- .debug_abbrev  0x0000095d      0x10d usart.o
+ .debug_abbrev  0x0000044e      0x22c kombo_nrf24.o
+ .debug_abbrev  0x0000067a      0x245 main.o
+ .debug_abbrev  0x000008bf       0xa3 spi.o
+ .debug_abbrev  0x00000962      0x10d usart.o
 
-.debug_line     0x00000000      0xca1
+.debug_line     0x00000000      0xcc9
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x10a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_line    0x0000010a      0x52f kombo_nrf24.o
- .debug_line    0x00000639      0x3f8 main.o
- .debug_line    0x00000a31       0xfe spi.o
- .debug_line    0x00000b2f      0x172 usart.o
+ .debug_line    0x0000010a      0x557 kombo_nrf24.o
+ .debug_line    0x00000661      0x3f8 main.o
+ .debug_line    0x00000a59       0xfe spi.o
+ .debug_line    0x00000b57      0x172 usart.o
 
-.debug_frame    0x00000000      0x3bc
+.debug_frame    0x00000000      0x3f0
  *(.debug_frame)
- .debug_frame   0x00000000      0x16c kombo_nrf24.o
- .debug_frame   0x0000016c      0x190 main.o
- .debug_frame   0x000002fc       0x44 spi.o
- .debug_frame   0x00000340       0x7c usart.o
+ .debug_frame   0x00000000      0x1a0 kombo_nrf24.o
+ .debug_frame   0x000001a0      0x190 main.o
+ .debug_frame   0x00000330       0x44 spi.o
+ .debug_frame   0x00000374       0x7c usart.o
 
-.debug_str      0x00000000      0x5c0
+.debug_str      0x00000000      0x5ad
  *(.debug_str)
  .debug_str     0x00000000      0x17a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega8a/avr4/crtatmega8a.o
- .debug_str     0x0000017a      0x2d8 kombo_nrf24.o
-                                0x311 (size before relaxing)
- .debug_str     0x00000452      0x13d main.o
-                                0x2f5 (size before relaxing)
- .debug_str     0x0000058f        0xb spi.o
-                                0x19e (size before relaxing)
- .debug_str     0x0000059a       0x26 usart.o
-                                0x1b2 (size before relaxing)
+ .debug_str     0x0000017a      0x309 kombo_nrf24.o
+                                0x34c (size before relaxing)
+ .debug_str     0x00000483       0xf9 main.o
+                                0x30c (size before relaxing)
+ .debug_str     0x0000057c        0xb spi.o
+                                0x1b1 (size before relaxing)
+ .debug_str     0x00000587       0x26 usart.o
+                                0x1c5 (size before relaxing)
 
-.debug_loc      0x00000000     0x1081
+.debug_loc      0x00000000      0xe13
  *(.debug_loc)
- .debug_loc     0x00000000      0x8a4 kombo_nrf24.o
- .debug_loc     0x000008a4      0x652 main.o
- .debug_loc     0x00000ef6       0x1f spi.o
- .debug_loc     0x00000f15      0x16c usart.o
+ .debug_loc     0x00000000      0x636 kombo_nrf24.o
+ .debug_loc     0x00000636      0x652 main.o
+ .debug_loc     0x00000c88       0x1f spi.o
+ .debug_loc     0x00000ca7      0x16c usart.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -680,12 +696,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x120
+.debug_ranges   0x00000000      0x138
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x78 kombo_nrf24.o
- .debug_ranges  0x00000078       0x60 main.o
- .debug_ranges  0x000000d8       0x20 spi.o
- .debug_ranges  0x000000f8       0x28 usart.o
+ .debug_ranges  0x00000000       0x90 kombo_nrf24.o
+ .debug_ranges  0x00000090       0x60 main.o
+ .debug_ranges  0x000000f0       0x20 spi.o
+ .debug_ranges  0x00000110       0x28 usart.o
 
 .debug_macro
  *(.debug_macro)

@@ -1,0 +1,21 @@
+--cpu Cortex-M0
+"kombo_nrf24_test_slave\startup_stm32f030x6.o"
+"kombo_nrf24_test_slave\usart.o"
+"kombo_nrf24_test_slave\kombo_nrf24.o"
+"kombo_nrf24_test_slave\spi.o"
+"kombo_nrf24_test_slave\main.o"
+"kombo_nrf24_test_slave\stm32f0xx_it.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_gpio.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_rcc.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_utils.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_exti.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_spi.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_dma.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_pwr.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_tim.o"
+"kombo_nrf24_test_slave\stm32f0xx_ll_usart.o"
+"kombo_nrf24_test_slave\system_stm32f0xx.o"
+--strict --scatter "kombo_nrf24_test_slave\kombo_nrf24_test_slave.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "kombo_nrf24_test_slave.map" -o kombo_nrf24_test_slave\kombo_nrf24_test_slave.axf

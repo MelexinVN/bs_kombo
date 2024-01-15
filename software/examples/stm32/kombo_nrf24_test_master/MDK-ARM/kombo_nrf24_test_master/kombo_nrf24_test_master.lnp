@@ -1,0 +1,21 @@
+--cpu Cortex-M0
+"kombo_nrf24_test_master\startup_stm32f030x6.o"
+"kombo_nrf24_test_master\main.o"
+"kombo_nrf24_test_master\stm32f0xx_it.o"
+"kombo_nrf24_test_master\kombo_nrf24.o"
+"kombo_nrf24_test_master\spi.o"
+"kombo_nrf24_test_master\usart.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_gpio.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_rcc.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_utils.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_exti.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_spi.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_dma.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_pwr.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_tim.o"
+"kombo_nrf24_test_master\stm32f0xx_ll_usart.o"
+"kombo_nrf24_test_master\system_stm32f0xx.o"
+--strict --scatter "kombo_nrf24_test_master\kombo_nrf24_test_master.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "kombo_nrf24_test_master.map" -o kombo_nrf24_test_master\kombo_nrf24_test_master.axf
