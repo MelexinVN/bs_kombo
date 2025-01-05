@@ -89,8 +89,6 @@ The first ready and executed application of the project - **СИДРУ**
 A description of the structure, operation, as well as all materials can be found in the [corresponding repository](https://github.com/MelexinVN/bs_kombo_sidru).
 
 
-### Cайт проекта: [bs-kombo.tilda.ws](http://bs-kombo.tilda.ws/)
-
 ### Электронная почта: 		    [bskombo@yandex.ru](bskombo@yandex.ru)
 
 ### Социальные сети:
@@ -98,9 +96,6 @@ A description of the structure, operation, as well as all materials can be found
 - паблик ВКонтакте: 			  [vk.com/bs_kombo](https://vk.com/bs_kombo)
 - Telegram-канал: 	        [t.me/bskombo](https://t.me/bskombo)
 - Telegram-чат: 	          [t.me/bs_kombo_chat](https://t.me/bs_kombo_chat)
-- канал Яндекс Дзен: 	      [dzen.ru/bs_kombo](https://dzen.ru/bs_kombo)
-
-### Project website: [bs-kombo.tilda.ws](http://bs-kombo.tilda.ws/)
 
 ### Email: [bskombo@yandex.ru](bskombo@yandex.ru)
 
@@ -109,7 +104,6 @@ A description of the structure, operation, as well as all materials can be found
 - public VKontakte: [vk.com/bs_kombo](https://vk.com/bs_kombo)
 - Telegram channel: [t.me/bskombo](https://t.me/bskombo)
 - Telegram chat: [t.me/bs_kombo_chat](https://t.me/bs_kombo_chat)
-- Yandex Zen channel: [dzen.ru/bs_kombo](https://dzen.ru/bs_kombo)
 
 
 <img align="left" width=150 src="https://github.com/MelexinVN/bs_kombo/blob/main/media/MHXC.png" />
